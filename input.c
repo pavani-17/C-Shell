@@ -6,6 +6,34 @@ void get_input()
     size_t bufsize = 100005;
     buffer = (char *)malloc(bufsize * sizeof(char));
     getline(&buffer,&bufsize,stdin);
+    history[n_h] = malloc(100000*sizeof(char)); 
+    if(n_h!=0)
+    {
+        if(strcmp(history[n_h-1],buffer)==0)
+        {
+            process_input(buffer);
+            return;
+        }
+    }
+    if(n_h<20)
+    {
+        strcpy(history[n_h],buffer);
+        n_h++;
+    }
+    else
+    {
+        strcpy(history[n_h],buffer);
+        n_h++;
+        close(file);
+        remove("history.text");
+        int j;
+        for(j=1;j<n_h;j++)
+        {
+            history[j-1] = history[j];
+        }
+        n_h--;
+    }
+    write_history();
     process_input(buffer);
 }
 

@@ -51,6 +51,14 @@ char* get_dir ()
 
 void change_dir(char* loc)
 {
+    if(loc==NULL)
+    {
+        loc="~";
+    }
+    if(strlen(loc)==0)
+    {
+        loc="~";
+    }
     loc = inc_tilda(loc);
     if(chdir(loc)!=0)
     {

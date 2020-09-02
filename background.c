@@ -12,7 +12,7 @@ void sigchld_handler(int signum)
 
 void background(char **instruction, int len)
 {
-    signal(SIGCHLD,sigchld_handler);
+    
     int fork_res = fork();
     if(fork_res==0)
     {

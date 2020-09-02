@@ -26,13 +26,17 @@ void execute_inst(char** instruction, int len)
     }
     else if(strcmp(instruction[0],"quit")==0)
     {
+        fclose(file);
         exit(0);
     }
     else if(strcmp(instruction[0],"pinfo")==0)
     {
         pinfo(len==1 ? NULL : instruction[1]);
     }
-    
+    else if(strcmp(instruction[0],"history")==0)
+    {
+        history_dis(len > 1 ? instruction[1] : NULL);
+    }
     else
     {
         if(strlen(instruction[len-1])==0)
