@@ -37,6 +37,29 @@ void execute_inst(char** instruction, int len)
     {
         history_dis(len > 1 ? instruction[1] : NULL);
     }
+    else if(strcmp(instruction[0],"nightswatch")==0)
+    {
+        if(strlen(instruction[len-1])==0)
+        {
+            len--;
+        }
+        if(len!=4)
+        {
+            printf("Incorrect format for nightswatch.\n");
+        }
+        if(strcmp(instruction[3],"interrupts")==0)
+        {
+            watch_interrupt(instruction[2]);
+        }
+        else if(strcmp(instruction[3],"newborn")==0)
+        {
+            watch_process(instruction[2]);
+        }
+        else
+        {
+            printf("Please give a valid format for nightswatch\n");
+        }        
+    }
     else
     {
         if(strlen(instruction[len-1])==0)
@@ -54,7 +77,6 @@ void execute_inst(char** instruction, int len)
             {
                 foreground(instruction,len);
             }
-            
         }   
     } 
     

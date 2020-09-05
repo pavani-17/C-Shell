@@ -1,0 +1,62 @@
+            CPU0       CPU1       CPU2       CPU3       CPU4       CPU5       CPU6       CPU7       
+   0:          9          0          0          0          0          0          0          0  IR-IO-APIC    2-edge      timer
+   1:      48433          0          0          0          0          0          0         40  IR-IO-APIC    1-edge      i8042
+   8:          0          1          0          0          0          0          0          0  IR-IO-APIC    8-edge      rtc0
+   9:         32          5          0          0          0          0          0          0  IR-IO-APIC    9-fasteoi   acpi
+  14:          0          0          0          0          0          0          0          0  IR-IO-APIC   14-fasteoi   INT34BB:00
+  16:          0          0          0          0          0          0          0          0  IR-IO-APIC   16-fasteoi   idma64.0, i2c_designware.0
+  17:      14658    5615414       3892          0          0    9405840          0    6340475  IR-IO-APIC   17-fasteoi   idma64.1, i2c_designware.1
+  19:          0          0          0          0          0          0          0          0  IR-IO-APIC   19-fasteoi   mmc0
+  20:          0          0          0          0          0          0          0          0  IR-IO-APIC   20-fasteoi   idma64.2
+  22:          0          0          0          0          0          0          0          0  IR-IO-APIC   22-fasteoi   idma64.3, pxa2xx-spi.3
+ 109:    1930507          0          0          0          0          0        271          0  IR-IO-APIC  109-fasteoi   ELAN1300:00
+ 120:          0          0          0          0          0          0          0          0  DMAR-MSI    0-edge      dmar0
+ 121:          0          0          0          0          0          0          0          0  DMAR-MSI    1-edge      dmar1
+ 122:          0          0          0          0          0          0          0          0  IR-PCI-MSI 458752-edge      PCIe PME
+ 123:          0          0          0          0          0          0          0          0  IR-PCI-MSI 466944-edge      aerdrv, PCIe PME, pcie-dpc
+ 124:          0          0          0          0          0          0          0          0  IR-PCI-MSI 475136-edge      aerdrv, PCIe PME, pcie-dpc
+ 125:         61        332        101   14488388         29        401       5598        854  IR-PCI-MSI 327680-edge      xhci_hcd
+ 126:          0          0          0          0          0          0          0          0  intel-gpio  231  0000:00:14.5 cd
+ 127:       5957       7824      17991     246060      57340     118707       1546     373479  IR-PCI-MSI 376832-edge      ahci[0000:00:17.0]
+ 128:          0         23          0          0          0          0          0          0  IR-PCI-MSI 360448-edge      mei_me
+ 129:        316          0          0          0          0          0          0          0  IR-PCI-MSI 1572864-edge      nvme0q0, nvme0q1
+ 130:          0          0          0        120          0          0          0          0  IR-PCI-MSI 514048-edge      snd_hda_intel:card0
+ 131:          0          0          0          0          0          0          0          0  IR-PCI-MSI 1572865-edge      nvme0q2
+ 132:          0          0          0          0          0          0          0          0  IR-PCI-MSI 1572866-edge      nvme0q3
+ 133:          0          0          0          0          0          0          0          0  IR-PCI-MSI 1572867-edge      nvme0q4
+ 134:          0          0          0          0         25          0          0          0  IR-PCI-MSI 1572868-edge      nvme0q5
+ 135:          0          0          0          0          0          0          0          0  IR-PCI-MSI 1572869-edge      nvme0q6
+ 136:     421598      22779    1371859      19903      81812      35711          0       9122  IR-PCI-MSI 333824-edge      iwlwifi: default queue
+ 137:        333        971        833     210722      14715      28858        140     246597  IR-PCI-MSI 333825-edge      iwlwifi: queue 1
+ 138:       2962       2736       1803      22102       7463      12903        461     280997  IR-PCI-MSI 333826-edge      iwlwifi: queue 2
+ 139:        263       1245       1147       8842       2264      63862        408       9044  IR-PCI-MSI 333827-edge      iwlwifi: queue 3
+ 140:        146       2581       1184      27763       3361       8670        495      19781  IR-PCI-MSI 333828-edge      iwlwifi: queue 4
+ 141:        241       1435       1733      16853       2426      21741        506      23287  IR-PCI-MSI 333829-edge      iwlwifi: queue 5
+ 142:        261       1058        642      26163      65960     137851       1558      24374  IR-PCI-MSI 333830-edge      iwlwifi: queue 6
+ 143:        226       2479       1692      88823       3027      21366       2181      48003  IR-PCI-MSI 333831-edge      iwlwifi: queue 7
+ 144:        484       1387      13711      51672       3258      15233        374      28959  IR-PCI-MSI 333832-edge      iwlwifi: queue 8
+ 145:         44         33          0          0          0          0          0          0  IR-PCI-MSI 333833-edge      iwlwifi: exception
+ 147:          0          0          0          0          0          0          0          0  IR-PCI-MSI 1572870-edge      nvme0q7
+ 148:       1504          0          0          0          0        127    8469290          0  IR-PCI-MSI 32768-edge      i915
+ 149:         21          0          0          0         16          0        309          0  IR-PCI-MSI 1048576-edge      nvkm
+ 150:          0          0          0          0          0          0          0         91  IR-PCI-MSI 1572871-edge      nvme0q8
+ NMI:          2        443        436        456        428        437        455        433   Non-maskable interrupts
+ LOC:    7503838    7498568    7332023    6976199    7686879    7184234   11447734    7121217   Local timer interrupts
+ SPU:          0          0          0          0          0          0          0          0   Spurious interrupts
+ PMI:          2        443        436        456        428        437        455        433   Performance monitoring interrupts
+ IWI:        266        258        210        339        196        277     598136        270   IRQ work interrupts
+ RTR:          0          0          0          0          0          0          0          0   APIC ICR read retries
+ RES:    1895452    1378149     548586     496041     503135     456976     367542     308437   Rescheduling interrupts
+ CAL:    1157477    1120465    1143105    1162794    1154116    1131204    1131561    1148850   Function call interrupts
+ TLB:    1149306    1142584    1163622    1187526    1175105    1152288    1150740    1164864   TLB shootdowns
+ TRM:          0          0          0          0          0          0          0          0   Thermal event interrupts
+ THR:          0          0          0          0          0          0          0          0   Threshold APIC interrupts
+ DFR:          0          0          0          0          0          0          0          0   Deferred Error APIC interrupts
+ MCE:          0          0          0          0          0          0          0          0   Machine check exceptions
+ MCP:        139        139        139        139        139        139        139        139   Machine check polls
+ HYP:          0          0          0          0          0          0          0          0   Hypervisor callback interrupts
+ ERR:          0
+ MIS:          0
+ PIN:          0          0          0          0          0          0          0          0   Posted-interrupt notification event
+ NPI:          0          0          0          0          0          0          0          0   Nested posted-interrupt event
+ PIW:          0          0          0          0          0          0          0          0   Posted-interrupt wakeup event

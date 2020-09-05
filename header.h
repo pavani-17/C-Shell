@@ -7,12 +7,14 @@
 #include <sys/stat.h> 
 #include <limits.h>
 #include <string.h>
+#include <sys/sysinfo.h>
 #include <dirent.h> 
 #include <pwd.h>
 #include <grp.h>
 #include <time.h>
 #include <signal.h>
 #include <fcntl.h>
+#include <sys/time.h>
 
 #define _POSIX_SOURCE
 #define _PROGRAM_NAME "whoami"
@@ -53,3 +55,5 @@ void sigchld_handler(int signum);
 void history_dis(char* ins);
 void read_history();
 void write_history();
+void watch_interrupt(char* t);
+void watch_process(char* t);
