@@ -11,7 +11,17 @@ void pinfo(char *inst)
     {
         pid = atoi(inst);
     }
-    char *st=malloc(50*sizeof(char)), *exe=malloc(sizeof(char));
+    char *st=malloc(50*sizeof(char)), *exe=malloc(50*sizeof(char));
+    if(st==NULL)
+    {
+        printf("%s Error in assigning memory %s",RED,NORMAL);
+        exit(0);
+    }
+    if(exe==NULL)
+    {
+        printf("%s Error in assigning memory %s",RED,NORMAL);
+        exit(0);
+    }
 
     sprintf(st,"/proc/%d/status",pid);
     sprintf(exe,"/proc/%d/exe",pid);
@@ -25,8 +35,23 @@ void pinfo(char *inst)
     }
     int n=3, i=0,m=18;
     char *mem=malloc(10000*sizeof(char)), *status = malloc(10000*sizeof(char)); 
+    if(mem==NULL)
+    {
+        printf("%s Error in assigning memory %s",RED,NORMAL);
+        exit(0);
+    }
+    if(status==NULL)
+    {
+        printf("%s Error in assigning memory %s",RED,NORMAL);
+        exit(0);
+    }
     char str[1000];
     char* ex_path = malloc(10000*sizeof(char));
+    if(ex_path==NULL)
+    {
+        printf("%s Error in assigning memory %s",RED,NORMAL);
+        exit(0);
+    }
     while(fgets(str,1000,f))
     {
         i++;

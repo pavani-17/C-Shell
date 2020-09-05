@@ -18,6 +18,11 @@ char* trim_dir(char*cwd)
     if(i==len1)
     {
         char* new = malloc(100000*sizeof(char));
+        if(new==NULL)
+        {
+            printf("%s Error in assigning memory%s",RED,NORMAL);
+            exit(0);
+        }
         new[0] = '~';
         strcat(new,cwd+len1);
         return new;

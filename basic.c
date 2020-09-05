@@ -3,28 +3,20 @@
 
 void get_val()
 {
-    struct utsname uts;
-    if(uname(&uts)<0)
+    SYSTEM = malloc(100005*sizeof(char));
+    USER = malloc(100005*sizeof(char));
+    if(SYSTEM==NULL)
     {
-        perror("Uname() error");
-        exit(1);
+        printf("%s Error in assigning memory%s",RED,NORMAL);
+        exit(0);
     }
-    SYSTEM = malloc(1000000*sizeof(char));
-    strcpy(SYSTEM,uts.nodename);
-
-    struct passwd *pw;
-    int uid;
-    int c;
-
-    uid = geteuid ();
-    pw = getpwuid (uid);
-    if(!pw)
+    if(USER==NULL)
     {
-        fprintf (stderr,"%s: cannot find username for UID %u\n",
-        _PROGRAM_NAME, (unsigned) uid);
-        exit (1);
+        printf("%s Error in assigning memory%s",RED,NORMAL);
+        exit(0);
     }
-    USER = pw->pw_name;
+    gethostname(SYSTEM,100005);
+    getlogin_r(USER,100005);
 
     char cwd[PATH_MAX];
     if (getcwd(cwd, sizeof(cwd)) == NULL)
@@ -51,6 +43,11 @@ char* inc_tilda(char * address)
     {
         char* new_addr;
         new_addr = malloc(100000*sizeof(char*));
+        if(new_addr==NULL)
+        {
+            printf("%s Error in assigning memory%s",RED,NORMAL);
+            exit(0);
+        }
         strcpy(new_addr,INTDIR);
         strcat(new_addr,address+1);
         return new_addr;        

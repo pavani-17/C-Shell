@@ -16,9 +16,19 @@ int main()
     if(file==NULL)
     {
         file = fopen(".history.txt","w");
+        if(file==NULL)
+        {
+            printf("%sError opening history.txt%s",RED,NORMAL);
+            exit(0);
+        }
         fclose(file);
     }
     history = malloc(21*sizeof(char*));
+    if(history==NULL)
+    {
+        printf("%s Error in assigning memory%s",RED,NORMAL);
+        exit(0);
+    }
     read_history();
     fclose(file);
     while(1)

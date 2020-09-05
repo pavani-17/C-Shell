@@ -5,8 +5,19 @@ void get_input()
     char* buffer;
     size_t bufsize = 100005;
     buffer = (char *)malloc(bufsize * sizeof(char));
+    if(buffer==NULL)
+    {
+        printf("%s Error in assigning memory%s",RED,NORMAL);
+        exit(0);
+    }
+    
     getline(&buffer,&bufsize,stdin);
     history[n_h] = malloc(100000*sizeof(char)); 
+    if(history[n_h]==NULL)
+    {
+        printf("%s Error in memory alloaction %s",RED,NORMAL);
+        exit(0);
+    }
     if(n_h!=0)
     {
         if(strcmp(history[n_h-1],buffer)==0)
@@ -35,6 +46,7 @@ void get_input()
     }
     write_history();
     process_input(buffer);
+    free(buffer);
 }
 
 void process_input(char* input)
@@ -52,6 +64,7 @@ void process_input(char* input)
         i++;
     }   
     execute_input(tokens, i);
+    free(tokens);
 }
 
 void execute_input(char** instructions, int num_ins)
@@ -59,6 +72,11 @@ void execute_input(char** instructions, int num_ins)
     int j=0,k;
     char* tok;
     char** sin_ins = malloc(10000*sizeof(char *));
+    if(sin_ins==NULL)
+    {
+        printf("%s Error in assigning memory%s",RED,NORMAL);
+        exit(0);
+    }
 
     while(j<num_ins)
     {
@@ -73,5 +91,5 @@ void execute_input(char** instructions, int num_ins)
         execute_inst(sin_ins,k);
         j++;
     }
-
+    free(sin_ins);
 }

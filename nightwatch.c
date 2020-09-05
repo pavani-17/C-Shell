@@ -93,6 +93,11 @@ void read_line (int n)
 void print_out(char* buffer)
 {
     char **tokens = malloc(100000*sizeof(char*));
+    if(tokens==NULL)
+    {
+        printf("%s Error in assigning memory %s",RED,NORMAL);
+        exit(0);
+    }
     char* tok; 
 
     tok = strtok(buffer, " ");
@@ -114,6 +119,7 @@ void print_out(char* buffer)
         printf("  %s\t",tokens[j]);
     }
     printf("\n\n");
+    free(tokens);
 }
 
 
@@ -129,6 +135,12 @@ void read_op()
     }
     
     char* line = malloc(1005*sizeof(char));
+    if(line==NULL)
+    {
+        printf("%s Error in assigning memory %s",RED,NORMAL);
+        exit(0);
+    }
+
     if(!fgets(line,1000,file))
     {
         printf("Error in reading");

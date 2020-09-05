@@ -28,6 +28,11 @@
 
 char *USER, *SYSTEM, *INTDIR, *PRDIR, *OPRDIR;
 
+char *process[100005];
+
+long long int process_id[100005] ;
+long long int curr_proc;
+
 char ** history;
 int n_h;
 FILE* file;

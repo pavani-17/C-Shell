@@ -35,8 +35,6 @@ void print_ls(char** loc, int hidden,int lf, int len, int files)
                 loc[i] = inc_tilda(loc[i]);
                 switch(flag)
                 {
-                    //loc[i] = inc_tilda(loc[i]);
-                    printf("%s\n",loc[i]);
                     case 0:
                             flag_01(loc[i],0);
                             break;
@@ -114,7 +112,8 @@ void flag_01 (char* loc, int hide)
 
     if (dr == NULL)  
     { 
-        printf("Could not open current directory" ); 
+        printf("%sCould not open current directory%s %s\n",RED,NORMAL,loc ); 
+        return;
     } 
     while ((de = readdir(dr)) != NULL)  
     {
@@ -134,7 +133,8 @@ void flag_23(char *loc, int hide)
 
     if (dr == NULL)  
     { 
-        printf("Could not open current directory" ); 
+        printf("%sCould not open current directory:%s %s\n",RED,NORMAL,loc ); 
+        return;
     }
     while((de=readdir(dr)) != NULL)
     {

@@ -8,6 +8,13 @@ void execute_inst(char** instruction, int len)
     {
         remove_spaces(instruction[i]);
     }
+    if(len>0)
+    {
+        if(strcmp(instruction[len-1],"&")==0)
+        {
+            background(instruction,len-1);
+        }
+    } 
     if(strcmp(instruction[0],"pwd")==0)
     {
         print_cur_dir();
@@ -46,6 +53,12 @@ void execute_inst(char** instruction, int len)
         if(len!=4)
         {
             printf("Incorrect format for nightswatch.\n");
+            return;
+        }
+        if(strcmp(instruction[2],"-n")!=0)
+        {
+            printf("Incorrect format for nightswatch.\n");
+            return;
         }
         if(strcmp(instruction[3],"interrupts")==0)
         {
@@ -66,18 +79,7 @@ void execute_inst(char** instruction, int len)
         {
             len--;
         }
-
-        if(len>0)
-        {
-            if(strcmp(instruction[len-1],"&")==0)
-            {
-                background(instruction,len);
-            }
-            else
-            {
-                foreground(instruction,len);
-            }
-        }   
+        foreground(instruction,len);
     } 
     
 }
