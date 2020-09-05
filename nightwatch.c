@@ -6,8 +6,11 @@ void watch_interrupt(char* t)
 {
     int n = atoi(t);
 
-    file = fopen("/proc/interrupts","r");
-
+    if(n==0)
+    {
+        printf("Wrong format for nightswatch\n");
+        return;
+    }
     
     if(file==NULL)
     {
@@ -33,12 +36,17 @@ void watch_interrupt(char* t)
             }
         }        
     }
-    fclose(file);
+
 }
 
 void watch_process(char* t)
 {
     int n = atoi(t);
+    if(n==0)
+    {
+        printf("Wrong format for nightswatch\n");
+        return;
+    }
     while(1)
     {
         read_op();
@@ -74,6 +82,7 @@ int input_available(int n)
 
 void read_line (int n)
 {
+    file = fopen("/proc/interrupts","r");
     int i = 0;
     char* buffer = malloc(100005*sizeof(char));
     int buffer_size = 100000;
@@ -87,7 +96,7 @@ void read_line (int n)
         }
     }
     print_out(buffer);
-
+    fclose(file);
 }
 
 void print_out(char* buffer)
@@ -119,7 +128,6 @@ void print_out(char* buffer)
         printf("  %s\t",tokens[j]);
     }
     printf("\n\n");
-    free(tokens);
 }
 
 

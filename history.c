@@ -16,7 +16,7 @@ void history_dis(char* ins)
         int n = atoi(ins);
         if(n==0)
         {
-            printf("Enter a valid number between 1 and 10");
+            printf("Enter a valid number between 1 and 10\n");
             return;
         }
         if(n<=0 || n>10)
@@ -34,12 +34,14 @@ void history_dis(char* ins)
 
 void read_history()
 {
-    file = fopen(".history.txt","r");
+    char name[100005];
+    sprintf(name,"%s/.history.txt",INTDIR);
+    file = fopen(name,"r");
     int  j=0;
     history[j] = malloc(1005*sizeof(char));
     if(history[j]==NULL)
     {
-        printf("%sError in memory execution%s",RED,NORMAL);
+        printf("%sError in memory allocation%s\n",RED,NORMAL);
     }
     while(fgets(history[j],1000,file))
     {
@@ -52,7 +54,9 @@ void read_history()
 
 void write_history()
 {
-    file = fopen(".history.txt","w");
+    char name[100005];
+    sprintf(name,"%s/.history.txt",INTDIR);
+    file = fopen(name,"w");
     if(file==NULL)
     {
         printf("%s Error in opening history file %s",RED,NORMAL);

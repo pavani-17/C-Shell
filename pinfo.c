@@ -30,7 +30,7 @@ void pinfo(char *inst)
 
     if((f=fopen(st,"r"))==NULL)
     {
-        perror("Process ID doesn't exist");
+        printf("Process ID doesn't exist\n");
         return;
     }
     int n=3, i=0,m=18;
@@ -66,7 +66,9 @@ void pinfo(char *inst)
     }
     fclose(f);
     int path = readlink(exe,ex_path,2000);
-    mem[0] = 'M';mem[1]='e';mem[2]='m';mem[3]='o';mem[4]='r';mem[5]='y';
+    strtok(mem,":");
+    mem = strtok(NULL,":");
+    
     if(path==-1)
     {
         strcpy(ex_path,"Executable path not found");
@@ -76,7 +78,7 @@ void pinfo(char *inst)
         ex_path[path] = '\0';
         ex_path = trim_dir(ex_path);
     }
-    printf("Procces ID : %d\nProcess %s%sExecutable Path: %s\n",pid,status,mem,ex_path);
+    printf("Procces ID: %d\nProcess %sMemory: %sExecutable Path: %s\n",pid,status,mem,ex_path);
     return;
 
 }

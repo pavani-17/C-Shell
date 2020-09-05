@@ -12,18 +12,14 @@ void foreground(char **instruction, int len)
         instruction[len] = '\0';
         if(execvp(instruction[0],instruction)==-1)
         {
-            printf("Command not found");
+            printf("Command not found\n");
         }
         exit(0);
     }
     else
     {
         int status;
-        if(waitpid(fork_res,NULL,WUNTRACED )==-1)
-        {
-            printf("%s Error in child process %s",RED,NORMAL);
-            exit(0);
-        }
+        waitpid(fork_res,&status,WUNTRACED );
         return;
     }
 }

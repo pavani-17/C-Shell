@@ -4,7 +4,7 @@ void sigchld_handler(int signum)
 {
     pid_t pid;
     int status;
-    while((pid=waitpid(-1,&status, WNOHANG)) != -1)
+    if((pid=waitpid(-1,&status, WNOHANG)) != -1)
     {
         int i;
         for(i=0;i<curr_proc;i++)
@@ -28,10 +28,19 @@ void background(char **instruction, int len)
         printf("%s Error in assigning memory%s",RED,NORMAL);
         exit(0);
     }
+    if(fork_res<0)
+    {
+        printf("Error in child process");
+        return;
+    }
     if(fork_res==0)
     {
         instruction[len] = '\0';
-        execvp(instruction[0],instruction);
+        if(execvp(instruction[0],instruction) < 0)
+        {
+            printf("Command not found\n");
+            exit(0);
+        }
         exit(0);
     }
     else

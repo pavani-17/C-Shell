@@ -36,7 +36,9 @@ void get_input()
         strcpy(history[n_h],buffer);
         n_h++;
         close(file);
-        remove("history.text");
+        char name[100005];
+        sprintf(name,"%s/.history.txt",INTDIR);
+        remove(name);
         int j;
         for(j=1;j<n_h;j++)
         {

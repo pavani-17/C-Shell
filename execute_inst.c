@@ -8,20 +8,29 @@ void execute_inst(char** instruction, int len)
     {
         remove_spaces(instruction[i]);
     }
-    if(len>0)
+    if(len>0 && strcmp(instruction[len-1],"&")==0)
     {
         if(strcmp(instruction[len-1],"&")==0)
         {
             background(instruction,len-1);
         }
     } 
-    if(strcmp(instruction[0],"pwd")==0)
+    else if(strcmp(instruction[0],"pwd")==0)
     {
         print_cur_dir();
     }
     else if(strcmp(instruction[0],"cd")==0)
     {
         change_dir(instruction[1]);
+        if(strlen(instruction[len-1])==0)
+        {
+            len--;
+        }
+        if(len>2)
+        {
+            printf("Too many arguments\n");
+            return;
+        }
     }
     else if(strcmp(instruction[0],"echo")==0)
     {
@@ -29,6 +38,7 @@ void execute_inst(char** instruction, int len)
     }
     else if (strcmp(instruction[0],"ls")==0)
     {
+        
        list_con(instruction,len);
     }
     else if(strcmp(instruction[0],"quit")==0)
@@ -38,6 +48,11 @@ void execute_inst(char** instruction, int len)
     }
     else if(strcmp(instruction[0],"pinfo")==0)
     {
+        if(len>2)
+        {
+            printf("Too many arguments\n");
+            return;
+        }
         pinfo(len==1 ? NULL : instruction[1]);
     }
     else if(strcmp(instruction[0],"history")==0)
@@ -55,7 +70,7 @@ void execute_inst(char** instruction, int len)
             printf("Incorrect format for nightswatch.\n");
             return;
         }
-        if(strcmp(instruction[2],"-n")!=0)
+        if(strcmp(instruction[1],"-n")!=0)
         {
             printf("Incorrect format for nightswatch.\n");
             return;
