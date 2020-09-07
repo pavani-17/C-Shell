@@ -24,7 +24,7 @@ void watch_interrupt(char* t)
         if(input_available(n))
         {
             char* prev = malloc(10*sizeof(char));
-            int prev_size = 10;
+            size_t prev_size = 10;
             getline(&prev, &prev_size,stdin);
             if(prev[0]=='q')
             {
@@ -53,7 +53,7 @@ void watch_process(char* t)
         if(input_available(n))
         {
             char* prev = malloc(10*sizeof(char));
-            int prev_size = 10;
+            size_t prev_size = 10;
             getline(&prev, &prev_size,stdin);
             if(prev[0]=='q')
             {

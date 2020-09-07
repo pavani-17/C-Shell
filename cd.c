@@ -40,7 +40,7 @@ char* get_dir ()
     if (getcwd(cwd, sizeof(cwd)) == NULL)
     {
         perror("getcwd() error");
-        return 1;
+        exit(0);
     }
     if(strcmp(cwd,INTDIR)==0)
     {

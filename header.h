@@ -15,9 +15,7 @@
 #include <signal.h>
 #include <fcntl.h>
 #include <sys/time.h>
-
-#define _POSIX_SOURCE
-#define _PROGRAM_NAME "whoami"
+#include <sys/wait.h>
 
 #define max(a,b) (a>b ? a : b)
 
@@ -62,3 +60,9 @@ void read_history();
 void write_history();
 void watch_interrupt(char* t);
 void watch_process(char* t);
+void remove_spaces(char* ins);
+void read_line (int n);
+int input_available(int n);
+void read_op();
+void print_out(char* buffer);
+

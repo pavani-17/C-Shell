@@ -6,7 +6,7 @@ void print_cur_dir()
     if (getcwd(cwd, sizeof(cwd)) == NULL)
     {
         perror("getcwd() error");
-        return 1;
+        exit(0);
     }
     printf("%s\n",cwd);
 }

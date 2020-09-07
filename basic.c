@@ -22,7 +22,7 @@ void get_val()
     if (getcwd(cwd, sizeof(cwd)) == NULL)
     {
         perror("getcwd() error");
-        return 1;
+        exit(0);
     }
 
     INTDIR = cwd;

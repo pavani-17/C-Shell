@@ -11,7 +11,7 @@ void sigchld_handler(int signum)
         {
             if(process_id[i] == pid)
             {
-                printf("\nProcess %s with Process ID %d exited with exit code %d\n",process[i],process_id[i],status);
+                printf("\nProcess %s with Process ID %lld exited with exit code %d\n",process[i],process_id[i],status);
                 free(process[i]);
             }
         }
@@ -21,13 +21,15 @@ void sigchld_handler(int signum)
 void background(char **instruction, int len)
 {
     
-    int fork_res = fork();    
+    int fork_res = fork();  
+    setpgid(0,0);  
     process[curr_proc] = malloc(100 *sizeof(char));
     if(process[curr_proc]==NULL)
     {
         printf("%s Error in assigning memory%s",RED,NORMAL);
         exit(0);
     }
+
     if(fork_res<0)
     {
         printf("Error in child process");
@@ -35,6 +37,7 @@ void background(char **instruction, int len)
     }
     if(fork_res==0)
     {
+        
         instruction[len] = '\0';
         if(execvp(instruction[0],instruction) < 0)
         {
@@ -48,7 +51,7 @@ void background(char **instruction, int len)
         instruction[len] = '\0';
         strcpy(process[curr_proc],instruction[0]);
         process_id[curr_proc] = fork_res;
-        printf("[%d] %d\n",curr_proc+1,process_id[curr_proc]);
+        printf("[%lld] %lld\n",curr_proc+1,process_id[curr_proc]);
         curr_proc++;
         return;
     }

@@ -44,6 +44,11 @@ void execute_inst(char** instruction, int len)
     else if(strcmp(instruction[0],"quit")==0)
     {
         fclose(file);
+        int i=0;
+        for(i=0;i<curr_proc;i++)
+        {
+            kill(process_id[i], SIGKILL);
+        }
         exit(0);
     }
     else if(strcmp(instruction[0],"pinfo")==0)
