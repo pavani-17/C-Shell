@@ -2,7 +2,7 @@
 
 FILE* file;
 
-void watch_interrupt(char* t)
+void watch_interrupt(char* t) // Executes nightwatch interrupts
 {
     int n = atoi(t);
 
@@ -39,7 +39,7 @@ void watch_interrupt(char* t)
 
 }
 
-void watch_process(char* t)
+void watch_process(char* t) // Executes nightwatch newborn
 {
     int n = atoi(t);
     if(n==0)
@@ -67,7 +67,7 @@ void watch_process(char* t)
     }
 }
 
-int input_available(int n)
+int input_available(int n) // Checks if any letter(q for exiting) is available when nightwatch executes
 {
     struct timeval val;
     val.tv_usec=0;
@@ -80,7 +80,7 @@ int input_available(int n)
     return (FD_ISSET(0,&in));
 }
 
-void read_line (int n)
+void read_line (int n) // Reads the required file
 {
     file = fopen("/proc/interrupts","r");
     int i = 0;
@@ -99,7 +99,7 @@ void read_line (int n)
     fclose(file);
 }
 
-void print_out(char* buffer)
+void print_out(char* buffer) // prints the output for interrupts
 {
     char **tokens = malloc(100000*sizeof(char*));
     if(tokens==NULL)
@@ -131,14 +131,14 @@ void print_out(char* buffer)
 }
 
 
-void read_op()
+void read_op() // Reads the required file and prints the output for newborn
 {
     
     file = fopen("/proc/loadavg","r");
     
     if(file==NULL)
     {
-        printf("/procs/interrupts could not be opened");
+        printf("/procs/loadavg could not be opened");
         return;
     }
     

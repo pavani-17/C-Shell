@@ -1,6 +1,6 @@
 #include "header.h"
 
-void print_cur_dir()
+void print_cur_dir() // Print the current working directory
 {
     char cwd[PATH_MAX];
     if (getcwd(cwd, sizeof(cwd)) == NULL)

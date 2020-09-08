@@ -1,6 +1,6 @@
 #include "header.h"
 
-void foreground(char **instruction, int len)
+void foreground(char **instruction, int len) // Execute the process in foreground 
 {
     int fork_res = fork();
     if(fork_res<0)

@@ -1,6 +1,6 @@
 #include "header.h"
 
-char* trim_dir(char*cwd)
+char* trim_dir(char*cwd) // Put root dir into folder names
 {
     int len = strlen(cwd), len1 = strlen(INTDIR);
     int i;
@@ -34,7 +34,7 @@ char* trim_dir(char*cwd)
     
 }
 
-char* get_dir ()
+char* get_dir () // Get current directory
 {
     char cwd[PATH_MAX];
     if (getcwd(cwd, sizeof(cwd)) == NULL)
@@ -54,7 +54,7 @@ char* get_dir ()
     }
 }
 
-void change_dir(char* loc)
+void change_dir(char* loc) // Change the directory
 {
     if(loc==NULL)
     {

@@ -1,7 +1,7 @@
 #include "header.h"
   
  
-void run_shell()
+void run_shell() // Execute the shell
 {
     signal(SIGCHLD,sigchld_handler);
     prompt();

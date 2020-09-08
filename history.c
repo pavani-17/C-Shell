@@ -1,6 +1,6 @@
 #include "header.h"
 
-void history_dis(char* ins)
+void history_dis(char* ins) // Print hitory 
 {
     if(ins==NULL)
     {
@@ -32,7 +32,7 @@ void history_dis(char* ins)
     }    
 }
 
-void read_history()
+void read_history() // Read history from file
 {
     char name[100005];
     sprintf(name,"%s/.history.txt",INTDIR);
@@ -52,7 +52,7 @@ void read_history()
     fclose(file);
 }
 
-void write_history()
+void write_history() // Write history for the file
 {
     char name[100005];
     sprintf(name,"%s/.history.txt",INTDIR);

@@ -1,6 +1,6 @@
 #include "header.h"
 
-void get_input()
+void get_input() // Read input from the browser
 {
     char* buffer;
     size_t bufsize = 100005;
@@ -51,7 +51,7 @@ void get_input()
     free(buffer);
 }
 
-void process_input(char* input)
+void process_input(char* input) // Seperate the inputs on basis of ';'
 {
     char **tokens = malloc(10000*sizeof(char*));
     char* tok; 
@@ -69,7 +69,7 @@ void process_input(char* input)
     free(tokens);
 }
 
-void execute_input(char** instructions, int num_ins)
+void execute_input(char** instructions, int num_ins) // Execute input
 {
     int j=0,k;
     char* tok;

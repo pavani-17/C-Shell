@@ -1,6 +1,6 @@
 #include "header.h"
 
-void print_ls(char** loc, int hidden,int lf, int len, int files)
+void print_ls(char** loc, int hidden,int lf, int len, int files) // Call appropriate functions for printing
 {
     
     if(files==0)
@@ -53,7 +53,7 @@ void print_ls(char** loc, int hidden,int lf, int len, int files)
     }
 }
   
-void list_con(char** loc,int len)
+void list_con(char** loc,int len) // Check number of flags and directories
 { 
     if(strlen(loc[len-1])==0)
     {
@@ -85,7 +85,7 @@ void list_con(char** loc,int len)
     print_ls(loc,hidden,lf,len,files);
 } 
 
-char check_flags_ls(char* inst)
+char check_flags_ls(char* inst) // Check flags of the command
 {
     if(strcmp(inst,"-la")==0 || strcmp(inst,"-al")==0)
     {
@@ -105,7 +105,7 @@ char check_flags_ls(char* inst)
     }   
 }
 
-void flag_01 (char* loc, int hide)
+void flag_01 (char* loc, int hide) // For -a and no flags
 {
     struct dirent *de;  
     DIR *dr = opendir(loc); 
@@ -125,7 +125,7 @@ void flag_01 (char* loc, int hide)
     closedir(dr);      
 }
 
-void flag_23(char *loc, int hide)
+void flag_23(char *loc, int hide) // For -l and -al
 {
     struct dirent *de;  
     DIR *dr = opendir(loc); 

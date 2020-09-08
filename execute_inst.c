@@ -1,6 +1,6 @@
 #include "header.h"
 
-void execute_inst(char** instruction, int len)
+void execute_inst(char** instruction, int len) // Execute the given instruction
 {
     char** n_ins;
     int i;
@@ -104,7 +104,7 @@ void execute_inst(char** instruction, int len)
     
 }
 
-void remove_spaces(char* ins)
+void remove_spaces(char* ins) // Removes the spaces in the input
 {
     int j=0,i;
     int len = strlen(ins);

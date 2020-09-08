@@ -1,7 +1,7 @@
 #include "header.h"
 
 
-void get_val()
+void get_val() // Get values of USER, SYSTEM and Root directory
 {
     SYSTEM = malloc(100005*sizeof(char));
     USER = malloc(100005*sizeof(char));
@@ -31,7 +31,7 @@ void get_val()
 
 }
 
-void prompt()
+void prompt() // Print the prompt everytime
 {
     signal(SIGCHLD,sigchld_handler);
     printf("<%s%s@%s%s:%s%s%s> ",GREEN,USER,SYSTEM,NORMAL,BLUE,PRDIR,NORMAL);

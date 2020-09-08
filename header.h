@@ -35,32 +35,57 @@ char ** history;
 int n_h;
 FILE* file;
 
+/*Functions in basic.c */
 void get_val();
 void prompt();
+char* inc_tilda(char * address);
+
+/* Functions in execute_inst.c */
+void execute_inst(char** instruction, int len);
+void remove_spaces(char* ins);
+
+/* Functions in input.c */
 void get_input();
 void process_input(char* input);
 void execute_input(char** instructions, int mun_ins);
-void execute_inst(char** instruction, int len);
-void print_cur_dir();
+
+/* Functions in cd.c */
+char* trim_dir(char* cwd);
 void change_dir(char* loc);
+char* get_dir ();
+
+/* Functions in current_dir.c */
+void print_cur_dir();
+
+/* Functions in echo.c */
 void echo_ex(char** inst, int len);
+
+/* Functions in ls.c */
+
 void list_con(char** loc, int len);
 char check_flags_ls(char* inst);
-char* inc_tilda(char * address);
 void print_ls(char** loc, int hidden,int lf, int len, int files);
 void flag_01 (char* loc, int hide);
 void flag_23 (char* loc, int hide);
-void pinfo(char *inst);
-char* trim_dir(char* cwd);
-void background(char **instruction, int len);
+
+/* Functions in foreground.c */
 void foreground(char **instruction, int len);
+
+/* Functions in background.c */
 void sigchld_handler(int signum);
+void background(char **instruction, int len);
+
+/* Functions in pinfo.c */
+void pinfo(char *inst);
+
+/* Functions in history.c */
 void history_dis(char* ins);
 void read_history();
 void write_history();
+
+/* Functions in nightwatch.c */
 void watch_interrupt(char* t);
 void watch_process(char* t);
-void remove_spaces(char* ins);
 void read_line (int n);
 int input_available(int n);
 void read_op();

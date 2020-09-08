@@ -1,6 +1,6 @@
 #include "header.h"
 
-void sigchld_handler(int signum)
+void sigchld_handler(int signum) // Handles the signal received when the child process dies
 {
     pid_t pid;
     int status;
@@ -18,7 +18,7 @@ void sigchld_handler(int signum)
     }
 }
 
-void background(char **instruction, int len)
+void background(char **instruction, int len) // Execute a process in bckground
 {
     
     int fork_res = fork();  

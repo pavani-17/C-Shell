@@ -1,6 +1,6 @@
 #include "header.h"
 
-void pinfo(char *inst)
+void pinfo(char *inst) // Executes pinfo command
 {
     int pid;
     if(inst == NULL)
