@@ -3,20 +3,20 @@
 
 void get_val() // Get values of USER, SYSTEM and Root directory
 {
-    SYSTEM = malloc(100005*sizeof(char));
-    USER = malloc(100005*sizeof(char));
-    if(SYSTEM==NULL)
+    system_name = malloc(100005*sizeof(char));
+    user_name = malloc(100005*sizeof(char));
+    if(system_name==NULL)
     {
         printf("%s Error in assigning memory%s",RED,NORMAL);
         exit(0);
     }
-    if(USER==NULL)
+    if(user_name==NULL)
     {
         printf("%s Error in assigning memory%s",RED,NORMAL);
         exit(0);
     }
-    gethostname(SYSTEM,100005);
-    getlogin_r(USER,100005);
+    gethostname(system_name,100005);
+    getlogin_r(user_name,100005);
 
     char cwd[PATH_MAX];
     if (getcwd(cwd, sizeof(cwd)) == NULL)
@@ -34,7 +34,7 @@ void get_val() // Get values of USER, SYSTEM and Root directory
 void prompt() // Print the prompt everytime
 {
     signal(SIGCHLD,sigchld_handler);
-    printf("<%s%s@%s%s:%s%s%s> ",GREEN,USER,SYSTEM,NORMAL,BLUE,PRDIR,NORMAL);
+    printf("<%s%s@%s%s:%s%s%s> ",GREEN,user_name,system_name,NORMAL,BLUE,PRDIR,NORMAL);
 }
 
 char* inc_tilda(char * address)

@@ -35,7 +35,6 @@ void get_input() // Read input from the browser
     {
         strcpy(history[n_h],buffer);
         n_h++;
-        fclose(file);
         char name[100005];
         sprintf(name,"%s/.history.txt",INTDIR);
         remove(name);

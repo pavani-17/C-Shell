@@ -1,10 +1,9 @@
 #include "header.h"
 
-void history_dis(char* ins) // Print hitory 
+void history_dis(char* ins) // Print history 
 {
     if(ins==NULL)
     {
-        fseek(file,0,SEEK_END);
         int j=0;
         for(j=max(0,n_h-5);j<n_h;j++)
         {
@@ -36,6 +35,7 @@ void read_history() // Read history from file
 {
     char name[100005];
     sprintf(name,"%s/.history.txt",INTDIR);
+    FILE* file;
     file = fopen(name,"r");
     int  j=0;
     history[j] = malloc(1005*sizeof(char));
@@ -56,6 +56,7 @@ void write_history() // Write history for the file
 {
     char name[100005];
     sprintf(name,"%s/.history.txt",INTDIR);
+    FILE* file;
     file = fopen(name,"w");
     if(file==NULL)
     {

@@ -12,6 +12,7 @@ int main()
 {   
     printf("\n\n%s\t\t\t\t***************** Welcome to C Shell ******************%s\n\n",BLUE,NORMAL);
     get_val();
+    FILE* file;
     file = fopen(".history.txt","r");
     if(file==NULL)
     {
@@ -23,6 +24,11 @@ int main()
         }
         fclose(file);
     }
+    else
+    {
+       fclose(file);
+    }
+    
     history = malloc(21*sizeof(char*));
     if(history==NULL)
     {
@@ -30,7 +36,7 @@ int main()
         exit(0);
     }
     read_history();
-    fclose(file);
+    
     while(1)
     {
         run_shell();

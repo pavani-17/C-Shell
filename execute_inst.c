@@ -2,7 +2,6 @@
 
 void execute_inst(char** instruction, int len) // Execute the given instruction
 {
-    char** n_ins;
     int i;
     for(i=0;i<len;i++)
     {
@@ -43,7 +42,6 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     }
     else if(strcmp(instruction[0],"quit")==0)
     {
-        fclose(file);
         int i=0;
         for(i=0;i<curr_proc;i++)
         {

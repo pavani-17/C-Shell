@@ -24,7 +24,7 @@
 #define NORMAL "\033[0m"
 #define RED "\033[0;31m"
 
-char *USER, *SYSTEM, *INTDIR, *PRDIR, *OPRDIR;
+char *user_name, *system_name, *INTDIR, *PRDIR, *OPRDIR;
 
 char *process[100005];
 
@@ -33,7 +33,6 @@ long long int curr_proc;
 
 char ** history;
 int n_h;
-FILE* file;
 
 /*Functions in basic.c */
 void get_val();

@@ -14,7 +14,7 @@
     * Prints the given parameters after removing the extra spaces
 
 2. `pwd` <br>
-    * Implemented in pwd.c
+    * Implemented in current_dir.c
     * Prints the current working directory
 
 3. `cd` [Location] <br>

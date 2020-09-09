@@ -1,7 +1,5 @@
 #include "header.h"
 
-FILE* file;
-
 void watch_interrupt(char* t) // Executes nightwatch interrupts
 {
     int n = atoi(t);
@@ -9,12 +7,6 @@ void watch_interrupt(char* t) // Executes nightwatch interrupts
     if(n==0)
     {
         printf("Wrong format for nightswatch\n");
-        return;
-    }
-    
-    if(file==NULL)
-    {
-        printf("/procs/interrupts could not be opened");
         return;
     }
     while(1)
@@ -82,6 +74,7 @@ int input_available(int n) // Checks if any letter(q for exiting) is available w
 
 void read_line (int n) // Reads the required file
 {
+    FILE* file;   
     file = fopen("/proc/interrupts","r");
     int i = 0;
     char* buffer = malloc(100005*sizeof(char));
@@ -133,7 +126,7 @@ void print_out(char* buffer) // prints the output for interrupts
 
 void read_op() // Reads the required file and prints the output for newborn
 {
-    
+    FILE* file;
     file = fopen("/proc/loadavg","r");
     
     if(file==NULL)
