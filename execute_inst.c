@@ -7,6 +7,10 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     {
         remove_spaces(instruction[i]);
     }
+    if(strlen(instruction[len-1])==0)
+    {
+        len--;
+    }
     if(len>0 && strcmp(instruction[len-1],"&")==0)
     {
         if(strcmp(instruction[len-1],"&")==0)
@@ -21,10 +25,6 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     else if(strcmp(instruction[0],"cd")==0)
     {
         change_dir(instruction[1]);
-        if(strlen(instruction[len-1])==0)
-        {
-            len--;
-        }
         if(len>2)
         {
             printf("Too many arguments\n");
@@ -42,12 +42,7 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     }
     else if(strcmp(instruction[0],"quit")==0)
     {
-        int i=0;
-        for(i=0;i<curr_proc;i++)
-        {
-            kill(process_id[i], SIGKILL);
-        }
-        exit(0);
+        quit();
     }
     else if(strcmp(instruction[0],"pinfo")==0)
     {
@@ -64,10 +59,6 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     }
     else if(strcmp(instruction[0],"nightswatch")==0)
     {
-        if(strlen(instruction[len-1])==0)
-        {
-            len--;
-        }
         if(len!=4)
         {
             printf("Incorrect format for nightswatch.\n");
@@ -91,12 +82,61 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
             printf("Please give a valid format for nightswatch\n");
         }        
     }
+    else if(strcmp(instruction[0],"setenv")==0)
+    {
+        if(len>3 || len<2)
+        {
+            printf("Incorrect number of arguments\n");
+            return;
+        }
+        if(instruction[2]==NULL)
+        {
+            instruction[2]="";
+        }
+        if(setenv(instruction[1],instruction[2],1)<0)
+        {
+            perror("setenv ");
+        }
+        
+    }
+    else if(strcmp(instruction[0],"unsetenv")==0)
+    {
+        if(len!=2)
+        {
+            printf("Incorrect number of arguments\n");
+            return;
+        }
+        if(unsetenv(instruction[1])<0)
+        {
+            perror("unsetenv ");
+        }
+    }
+    else if(strcmp(instruction[0],"jobs")==0)
+    {
+        jobs();
+    }
+    else if(strcmp(instruction[0],"kjob")==0)
+    {
+        if(len!=3)
+        {
+            printf("Incorrect number of arguments\n");
+            return;
+        }
+        kjob(instruction[1], instruction[2]);
+    }
+    else if(strcmp(instruction[0],"fg")==0)
+    {
+        if(len!=2)
+        {
+            fg(instruction[1]);
+        }
+    }
+    else if(strcmp(instruction[0],"overkill")==0)
+    {
+        overkill();
+    }
     else
     {
-        if(strlen(instruction[len-1])==0)
-        {
-            len--;
-        }
         foreground(instruction,len);
     } 
     

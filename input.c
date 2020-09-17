@@ -52,7 +52,6 @@ void get_input() // Read input from the browser
 
 void process_input(char* input) // Seperate the inputs on basis of ';'
 {
-    char **tokens = malloc(10000*sizeof(char*));
     char* tok; 
 
     tok = strtok(input, ";");
@@ -60,15 +59,12 @@ void process_input(char* input) // Seperate the inputs on basis of ';'
 
     while(tok!=NULL)
     {
-        tokens[i] = tok;
+        processPipe(tok);
         tok = strtok(0,";");
-        i++;
     }   
-    execute_input(tokens, i);
-    free(tokens);
 }
 
-void execute_input(char** instructions, int num_ins) // Execute input
+void execute_input(char* instructions) // Execute input
 {
     int j=0,k;
     char* tok;
@@ -78,19 +74,15 @@ void execute_input(char** instructions, int num_ins) // Execute input
         printf("%s Error in assigning memory%s",RED,NORMAL);
         exit(0);
     }
-
-    while(j<num_ins)
+    tok = strtok(instructions," \t");
+    k=0;
+    while(tok!=NULL)
     {
-        tok = strtok(instructions[j]," ");
-        k=0;
-        while(tok!=NULL)
-        {
-            sin_ins[k] = tok;
-            k++;
-            tok = strtok(0," ");
-        }
-        execute_inst(sin_ins,k);
-        j++;
+        sin_ins[k] = tok;
+        k++;
+        tok = strtok(0," ");
     }
+    execute_inst(sin_ins,k);
+    j++;
     free(sin_ins);
 }

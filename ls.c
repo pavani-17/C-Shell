@@ -55,10 +55,6 @@ void print_ls(char** loc, int hidden,int lf, int len, int files) // Call appropr
   
 void list_con(char** loc,int len) // Check number of flags and directories
 { 
-    if(strlen(loc[len-1])==0)
-    {
-        len--;
-    }
     int lf=0, hidden=0,i,files=0;
 
     for(i=1;i<len;i++)

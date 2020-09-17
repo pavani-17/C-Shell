@@ -29,6 +29,7 @@ char *user_name, *system_name, *INTDIR, *PRDIR, *OPRDIR;
 char *process[100005];
 
 long long int process_id[100005] ;
+int process_status[100005];
 long long int curr_proc;
 
 char ** history;
@@ -46,7 +47,7 @@ void remove_spaces(char* ins);
 /* Functions in input.c */
 void get_input();
 void process_input(char* input);
-void execute_input(char** instructions, int mun_ins);
+void execute_input(char* instructions);
 
 /* Functions in cd.c */
 char* trim_dir(char* cwd);
@@ -90,3 +91,20 @@ int input_available(int n);
 void read_op();
 void print_out(char* buffer);
 
+/* Functions in piping.c */
+void processPipe(char* input);
+
+/* Functions in jobs.c */
+void jobs();
+
+/* Functions in kjob.c */
+void kjob(char* pid, char* sig_id);
+
+/* Functions in fg.c */
+void fg(char* pid);
+
+/* Functions in quit.c */
+void quit();
+
+/* Functions in overkill.c */
+void overkill();

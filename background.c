@@ -11,8 +11,8 @@ void sigchld_handler(int signum) // Handles the signal received when the child p
         {
             if(process_id[i] == pid)
             {
-                printf("\nProcess %s with Process ID %lld exited with exit code %d\n",process[i],process_id[i],status);
-                free(process[i]);
+                fprintf(stderr,"\nProcess %s with Process ID %lld exited with exit code %d\n",process[i],process_id[i],status);
+                process_status[i] = 1;
             }
         }
     }
@@ -51,6 +51,7 @@ void background(char **instruction, int len) // Execute a process in bckground
         instruction[len] = '\0';
         strcpy(process[curr_proc],instruction[0]);
         process_id[curr_proc] = fork_res;
+        process_status[curr_proc] = 0;
         printf("[%lld] %lld\n",curr_proc+1,process_id[curr_proc]);
         curr_proc++;
         return;

@@ -5,7 +5,7 @@ void history_dis(char* ins) // Print history
     if(ins==NULL)
     {
         int j=0;
-        for(j=max(0,n_h-5);j<n_h;j++)
+        for(j=max(0,n_h-10);j<n_h;j++)
         {
             printf("%2d   %s",j+1,history[j]);
         }
@@ -15,10 +15,10 @@ void history_dis(char* ins) // Print history
         int n = atoi(ins);
         if(n==0)
         {
-            printf("Enter a valid number between 1 and 10\n");
+            printf("Enter a valid number between 1 and 20\n");
             return;
         }
-        if(n<=0 || n>10)
+        if(n<=0 || n>20)
         {
             printf("Incorrect number of elements\n");
             return;
