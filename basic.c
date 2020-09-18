@@ -24,11 +24,13 @@ void get_val() // Get values of USER, SYSTEM and Root directory
         perror("getcwd() error");
         exit(0);
     }
-
-    INTDIR = cwd;
-    PRDIR = "~";
+    PREVDIR = malloc(100005*sizeof(char));
+    PRDIR  = malloc(100005*sizeof(char));
+    INTDIR = malloc(100005*sizeof(char));
+    strcpy(INTDIR,cwd);
+    strcpy(PRDIR,"~");
     OPRDIR = cwd;
-
+    strcpy(PREVDIR,"~");
 }
 
 void prompt() // Print the prompt everytime

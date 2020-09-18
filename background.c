@@ -1,23 +1,5 @@
 #include "header.h"
 
-void sigchld_handler(int signum) // Handles the signal received when the child process dies
-{
-    pid_t pid;
-    int status;
-    if((pid=waitpid(-1,&status, WNOHANG)) != -1)
-    {
-        int i;
-        for(i=0;i<curr_proc;i++)
-        {
-            if(process_id[i] == pid)
-            {
-                fprintf(stderr,"\nProcess %s with Process ID %lld exited with exit code %d\n",process[i],process_id[i],status);
-                process_status[i] = 1;
-            }
-        }
-    }
-}
-
 void background(char **instruction, int len) // Execute a process in bckground
 {
     

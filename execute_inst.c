@@ -23,13 +23,13 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
         print_cur_dir();
     }
     else if(strcmp(instruction[0],"cd")==0)
-    {
-        change_dir(instruction[1]);
+    { 
         if(len>2)
         {
             printf("Too many arguments\n");
             return;
         }
+        change_dir(instruction[1]);
     }
     else if(strcmp(instruction[0],"echo")==0)
     {

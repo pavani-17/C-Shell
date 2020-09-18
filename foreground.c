@@ -20,7 +20,10 @@ void foreground(char **instruction, int len) // Execute the process in foregroun
     else
     {
         int status;
+        strcpy(curr_fore_proc,instruction[0]);
+        curr_fore = fork_res;
         waitpid(fork_res,&status,WUNTRACED);
+        curr_fore = -1;
         return;
     }
 }

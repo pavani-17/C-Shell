@@ -11,7 +11,12 @@ void get_input() // Read input from the browser
         exit(0);
     }
     
-    getline(&buffer,&bufsize,stdin);
+    int p = getline(&buffer,&bufsize,stdin);
+    if(p==-1)
+    {
+        printf("\n");
+        quit();
+    }
     history[n_h] = malloc(100000*sizeof(char)); 
     if(history[n_h]==NULL)
     {

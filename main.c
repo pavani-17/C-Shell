@@ -4,6 +4,8 @@
 void run_shell() // Execute the shell
 {
     signal(SIGCHLD,sigchld_handler);
+    signal(SIGINT,sigint_handler);
+    signal(SIGTSTP,sigtstp_handler);
     prompt();
     get_input();
 }
@@ -11,6 +13,7 @@ void run_shell() // Execute the shell
 int main() 
 {   
     printf("\n\n%s\t\t\t\t***************** Welcome to C Shell ******************%s\n\n",BLUE,NORMAL);
+    curr_fore = -1;
     get_val();
     FILE* file;
     file = fopen(".history.txt","r");

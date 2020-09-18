@@ -24,13 +24,15 @@
 #define NORMAL "\033[0m"
 #define RED "\033[0;31m"
 
-char *user_name, *system_name, *INTDIR, *PRDIR, *OPRDIR;
+char *user_name, *system_name, *INTDIR, *PRDIR, *OPRDIR, *PREVDIR;
+
 
 char *process[100005];
-
+char curr_fore_proc[100005];
 long long int process_id[100005] ;
 int process_status[100005];
 long long int curr_proc;
+int curr_fore;
 
 char ** history;
 int n_h;
@@ -72,7 +74,6 @@ void flag_23 (char* loc, int hide);
 void foreground(char **instruction, int len);
 
 /* Functions in background.c */
-void sigchld_handler(int signum);
 void background(char **instruction, int len);
 
 /* Functions in pinfo.c */
@@ -112,3 +113,8 @@ void quit();
 
 /* Functions in overkill.c */
 void overkill();
+
+/* Function in signal_handler.c */
+void sigchld_handler(int signum);
+void sigint_handler(int signum);
+void sigtstp_handler(int signum);
