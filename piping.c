@@ -2,7 +2,7 @@
 
 void processPipe(char* input)
 {
-    char** instructions = malloc(1000*sizeof(char*));
+    char** instructions = malloc(1000*sizeof(char));
     int i=0;
     char* tok = strtok(input,"|");
     while(tok!=NULL)
@@ -18,14 +18,17 @@ void processPipe(char* input)
     //     printf("%s %d\n",instructions[j],j);
     // }
     int cin_temp = dup(0);
-    int cout_temp = dup(2);
+    int cout_temp = dup(1);
     int fd[i][2];
+    // printf("%d\n",i);
     for(j=0;j<i;j++)
     {
+        //printf("%s\n",instructions[j]);
         if(j==(i-1))
         {
             dup2(cout_temp,1);
-            execute_input(instructions[j]);
+            //printf("Recognise   %s\n",instructions[j]);
+            output_redirection(instructions[j]);
             dup2(cin_temp,0);
             if((j-1)!=0)
             {
@@ -38,8 +41,9 @@ void processPipe(char* input)
             {
                 perror("Pipe creation");
             }
+            //printf("Or dont %s\n",instructions[j]);
             dup2(fd[j][1],1);
-            execute_input(instructions[j]);
+            output_redirection(instructions[j]);
             close(fd[j][1]);
             dup2(fd[j][0],0);
             if(j!=0)
@@ -48,4 +52,6 @@ void processPipe(char* input)
             }
         } 
     }
+    dup2(cout_temp,1);
+    dup2(cin_temp,0);
 }

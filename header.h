@@ -54,7 +54,7 @@ char* trim_dir(char* cwd);
 void change_dir(char* loc);
 char* get_dir ();
 
-/* Functions in current_dir.c */
+/* Functions in pwd.c */
 void print_cur_dir();
 
 /* Functions in echo.c */
@@ -93,6 +93,10 @@ void print_out(char* buffer);
 
 /* Functions in piping.c */
 void processPipe(char* input);
+
+/* Functions in redirection.c */
+void output_redirection(char* input);
+void input_redirection(char* input);
 
 /* Functions in jobs.c */
 void jobs();
