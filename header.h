@@ -118,3 +118,7 @@ void overkill();
 void sigchld_handler(int signum);
 void sigint_handler(int signum);
 void sigtstp_handler(int signum);
+
+/* Function in bg.c */
+void bg(char* pid);
+

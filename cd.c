@@ -56,6 +56,8 @@ char* get_dir () // Get current directory
 
 void change_dir(char* loc) // Change the directory
 {
+    int flag=0;
+    char temp[100005];
     if(loc==NULL || strlen(loc)==0)
     {
         loc="~";
@@ -63,6 +65,8 @@ void change_dir(char* loc) // Change the directory
     else if(strcmp(loc,"-")==0)
     {
         strcpy(loc,PREVDIR);
+        flag=1;
+        strcpy(temp,loc);
     }
     //printf("%s\n",loc);
     strcpy(PREVDIR,PRDIR);
@@ -73,5 +77,9 @@ void change_dir(char* loc) // Change the directory
         return;
     }
     PRDIR = get_dir();
+    if(flag==1)
+    {
+        printf("%s\n",temp);
+    }
     //printf("%s %s\n",PREVDIR,PRDIR);
 }
