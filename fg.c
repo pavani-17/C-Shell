@@ -3,13 +3,30 @@
 void fg(char* pid)
 {
     int pidt = atoi(pid);
-    if(pidt==0 || pidt > curr_proc || process_status[pidt-1]==0)
+    //printf("%d\n",pidt);
+    if(pidt==0 || pidt > curr_proc || process_status[pidt-1]!=0)
     {
         printf("Incorrect process number \n");
     }
     else
     {
+        //printf("Came here\n");
+        // if(setpgid(process_id[pidt-1],0)<0)
+        // {
+        //     perror("setpgid");
+        // }
         kill(process_id[pidt-1],SIGCONT);
-        tcsetpgrp(0,process_id[pidt-1]);
+        // int status;
+        // waitpid(process_id[pidt-1],&status,WUNTRACED);
+        int status;
+        int shellpid = getpgid(0);
+        signal(SIGTTOU, SIG_IGN);
+        tcsetpgrp(0,getpgid(process_id[pidt-1]));
+        //signal(SIGTTOU, SIG_DFL);
+        waitpid(process_id[pidt-1],&status,WUNTRACED);
+        //signal(SIGTTOU, SIG_IGN);
+        tcsetpgrp(0,shellpid);
+        signal(SIGTTOU, SIG_DFL);
+        return;
     }
 }

@@ -126,10 +126,27 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     }
     else if(strcmp(instruction[0],"fg")==0)
     {
-        if(len!=2)
+        if(len==2)
         {
             fg(instruction[1]);
         }
+        else
+        {
+            printf("Incorrect format for fg");
+        }
+        
+    }
+    else if(strcmp(instruction[0],"bg")==0)
+    {
+        if(len==2)
+        {
+            bg(instruction[1]);
+        }
+        else
+        {
+            printf("Incorrect format for bg");
+        }
+        
     }
     else if(strcmp(instruction[0],"overkill")==0)
     {
