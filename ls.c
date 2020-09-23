@@ -139,7 +139,7 @@ void flag_23(char *loc, int hide) // For -l and -al
             char buff[100000];
             sprintf(buff,"%s/%s",loc,de->d_name);
             stat(buff, &mystat);
-            printf("%c%c%c%c%c%c%c%c%c%c",S_ISDIR(mystat.st_mode)?'d':'-',S_IRUSR?'r':'-',S_IWUSR?'w':'-',S_IXUSR?'x':'-',S_IRGRP?'r':'-',S_IWGRP?'w':'-',S_IXGRP?'x':'-',S_IROTH?'r':'-',S_IWOTH?'w':'-',S_IXOTH?'x':'-');    
+            printf("%c%c%c%c%c%c%c%c%c%c",S_ISDIR(mystat.st_mode)?'d':'-',(mystat.st_mode & S_IRUSR)?'r':'-',(mystat.st_mode & S_IWUSR)?'w':'-',(mystat.st_mode & S_IXUSR)?'x':'-',(mystat.st_mode & S_IRGRP)?'r':'-',(mystat.st_mode & S_IWGRP)?'w':'-',(mystat.st_mode & S_IXGRP)?'x':'-',(mystat.st_mode & S_IROTH)?'r':'-',(mystat.st_mode & S_IWOTH)?'w':'-',(mystat.st_mode & S_IXOTH)?'x':'-');    
             struct passwd *pw = getpwuid(mystat.st_uid);
 			struct group  *gr = getgrgid(mystat.st_gid);
 			char date[100];
