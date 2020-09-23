@@ -7,12 +7,12 @@ void get_val() // Get values of USER, SYSTEM and Root directory
     user_name = malloc(100005*sizeof(char));
     if(system_name==NULL)
     {
-        printf("%s Error in assigning memory%s",RED,NORMAL);
+        fprintf(stderr,"%s Error in assigning memory%s",RED,NORMAL);
         exit(0);
     }
     if(user_name==NULL)
     {
-        printf("%s Error in assigning memory%s",RED,NORMAL);
+        fprintf(stderr,"%s Error in assigning memory%s",RED,NORMAL);
         exit(0);
     }
     gethostname(system_name,100005);
@@ -36,7 +36,16 @@ void get_val() // Get values of USER, SYSTEM and Root directory
 void prompt() // Print the prompt everytime
 {
     signal(SIGCHLD,sigchld_handler);
-    printf("<%s%s@%s%s:%s%s%s> ",GREEN,user_name,system_name,NORMAL,BLUE,PRDIR,NORMAL);
+    if(status==1)
+    {
+        printf("\n%s:')  %s",GREEN,NORMAL);
+    }
+    else
+    {
+        printf("\n%s:'(  %s",RED,NORMAL);
+    }
+    
+    printf("%s%s@%s%s: %s%s%s $ ",CYAN,user_name,system_name,NORMAL,MAGENTA,PRDIR,NORMAL);
 }
 
 char* inc_tilda(char * address)
@@ -47,7 +56,7 @@ char* inc_tilda(char * address)
         new_addr = malloc(100000*sizeof(char*));
         if(new_addr==NULL)
         {
-            printf("%s Error in assigning memory%s",RED,NORMAL);
+            fprintf(stderr,"%s Error in assigning memory%s",RED,NORMAL);
             exit(0);
         }
         strcpy(new_addr,INTDIR);

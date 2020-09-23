@@ -8,13 +8,14 @@ void background(char **instruction, int len) // Execute a process in bckground
     process[curr_proc] = malloc(100 *sizeof(char));
     if(process[curr_proc]==NULL)
     {
-        printf("%s Error in assigning memory%s",RED,NORMAL);
+        fprintf(stderr,"Error in assigning memory");
         exit(0);
     }
 
     if(fork_res<0)
     {
-        printf("Error in child process");
+        perror("New process");
+        status=1;
         return;
     }
     if(fork_res==0)
@@ -23,8 +24,8 @@ void background(char **instruction, int len) // Execute a process in bckground
         instruction[len] = '\0';
         if(execvp(instruction[0],instruction) < 0)
         {
-            printf("Command not found\n");
-            exit(0);
+            fprintf(stderr,"Command not found\n");
+            exit(1);
         }
         exit(0);
     }
@@ -34,7 +35,7 @@ void background(char **instruction, int len) // Execute a process in bckground
         strcpy(process[curr_proc],instruction[0]);
         process_id[curr_proc] = fork_res;
         process_status[curr_proc] = 0;
-        printf("[%lld] %lld\n",curr_proc+1,process_id[curr_proc]);
+        fprintf(stderr,"[%lld] %lld\n",curr_proc+1,process_id[curr_proc]);
         curr_proc++;
         return;
     }

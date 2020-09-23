@@ -22,7 +22,9 @@
 #define GREEN "\033[1;32m"
 #define BLUE "\033[1;34m"
 #define NORMAL "\033[0m"
-#define RED "\033[0;31m"
+#define RED "\033[1;31m"
+#define CYAN "\033[1;36m"
+#define MAGENTA "\033[1;35m"
 
 char *user_name, *system_name, *INTDIR, *PRDIR, *OPRDIR, *PREVDIR;
 
@@ -33,6 +35,7 @@ long long int process_id[100005] ;
 int process_status[100005];
 long long int curr_proc;
 int curr_fore;
+int status;
 
 char ** history;
 int n_h;

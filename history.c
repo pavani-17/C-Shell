@@ -15,12 +15,14 @@ void history_dis(char* ins) // Print history
         int n = atoi(ins);
         if(n==0)
         {
-            printf("Enter a valid number between 1 and 20\n");
+            fprintf(stderr,"Enter a valid number between 1 and 20\n");
+            status = 0;
             return;
         }
         if(n<=0 || n>20)
         {
-            printf("Incorrect number of elements\n");
+            fprintf(stderr,"Incorrect number of elements\n");
+            status = 0;
             return;
         }
         int j=0;
@@ -41,7 +43,8 @@ void read_history() // Read history from file
     history[j] = malloc(1005*sizeof(char));
     if(history[j]==NULL)
     {
-        printf("%sError in memory allocation%s\n",RED,NORMAL);
+        fprintf(stderr,"%sError in memory allocation%s\n",RED,NORMAL);
+        return;
     }
     while(fgets(history[j],1000,file))
     {
@@ -60,7 +63,7 @@ void write_history() // Write history for the file
     file = fopen(name,"w");
     if(file==NULL)
     {
-        printf("%s Error in opening history file %s",RED,NORMAL);
+        perror("History");
         return;
     }
     int j=0;

@@ -12,7 +12,8 @@ void run_shell() // Execute the shell
 
 int main() 
 {   
-    printf("\n\n%s\t\t\t\t***************** Welcome to C Shell ******************%s\n\n",BLUE,NORMAL);
+    printf("\n\n%s\t\t\t\t    ***************** Welcome to C Shell ******************%s\n\n",BLUE,NORMAL);
+    status=1;
     curr_fore = -1;
     get_val();
     FILE* file;
@@ -22,7 +23,7 @@ int main()
         file = fopen(".history.txt","w");
         if(file==NULL)
         {
-            printf("%sError opening history.txt%s",RED,NORMAL);
+            printf("Error opening history.txt");
             exit(0);
         }
         fclose(file);
@@ -35,7 +36,7 @@ int main()
     history = malloc(21*sizeof(char*));
     if(history==NULL)
     {
-        printf("%s Error in assigning memory%s",RED,NORMAL);
+        printf("Error in assigning memory");
         exit(0);
     }
     read_history();

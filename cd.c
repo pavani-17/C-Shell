@@ -20,7 +20,7 @@ char* trim_dir(char*cwd) // Put root dir into folder names
         char* new = malloc(100000*sizeof(char));
         if(new==NULL)
         {
-            printf("%s Error in assigning memory%s",RED,NORMAL);
+            fprintf(stderr,"%s Error in assigning memory%s",RED,NORMAL);
             exit(0);
         }
         new[0] = '~';
@@ -74,6 +74,7 @@ void change_dir(char* loc) // Change the directory
     if(chdir(loc)!=0)
     {
         perror("cd failed");
+        status = 0;
         return;
     }
     PRDIR = get_dir();

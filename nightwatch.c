@@ -6,7 +6,8 @@ void watch_interrupt(char* t) // Executes nightwatch interrupts
 
     if(n==0)
     {
-        printf("Wrong format for nightswatch\n");
+        fprintf(stderr,"Wrong format for nightswatch\n");
+        status=0;
         return;
     }
     while(1)
@@ -24,7 +25,7 @@ void watch_interrupt(char* t) // Executes nightwatch interrupts
             }
             else
             {
-                printf("To exit, press 'q'\n");
+                fprintf(stderr,"To exit, press 'q'\n");
             }
         }        
     }
@@ -36,7 +37,8 @@ void watch_process(char* t) // Executes nightwatch newborn
     int n = atoi(t);
     if(n==0)
     {
-        printf("Wrong format for nightswatch\n");
+        fprintf(stderr,"Wrong format for nightswatch\n");
+        status = 0;
         return;
     }
     while(1)
@@ -49,6 +51,7 @@ void watch_process(char* t) // Executes nightwatch newborn
             getline(&prev, &prev_size,stdin);
             if(prev[0]=='q')
             {
+                status=1;
                 break;
             }
             else
@@ -97,7 +100,7 @@ void print_out(char* buffer) // prints the output for interrupts
     char **tokens = malloc(100000*sizeof(char*));
     if(tokens==NULL)
     {
-        printf("%s Error in assigning memory %s",RED,NORMAL);
+        fprintf(stderr," Error in assigning memory ");
         exit(0);
     }
     char* tok; 
@@ -131,20 +134,23 @@ void read_op() // Reads the required file and prints the output for newborn
     
     if(file==NULL)
     {
-        printf("/procs/loadavg could not be opened");
+        printf("/procs/loadavg could not be opened\n");
+        status=0;
         return;
     }
     
     char* line = malloc(1005*sizeof(char));
     if(line==NULL)
     {
-        printf("%s Error in assigning memory %s",RED,NORMAL);
+        fprintf(stderr," Error in assigning memory\n");
+        status=0;
         exit(0);
     }
 
     if(!fgets(line,1000,file))
     {
-        printf("Error in reading");
+        printf("Error in reading\n");
+        status = 0;
         return;
     }
     char **tokens = malloc(100000*sizeof(char*));

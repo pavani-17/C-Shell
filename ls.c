@@ -48,6 +48,7 @@ void print_ls(char** loc, int hidden,int lf, int len, int files) // Call appropr
                             flag_23(loc[i],1);
                             break;
                 }
+                printf("\n");
             }
         }
     }
@@ -108,7 +109,8 @@ void flag_01 (char* loc, int hide) // For -a and no flags
 
     if (dr == NULL)  
     { 
-        printf("%sCould not open current directory%s %s\n",RED,NORMAL,loc ); 
+        fprintf(stderr,"Could not open directory%s \n",loc ); 
+        status = 0;
         return;
     } 
     while ((de = readdir(dr)) != NULL)  
@@ -129,7 +131,8 @@ void flag_23(char *loc, int hide) // For -l and -al
 
     if (dr == NULL)  
     { 
-        printf("%sCould not open current directory:%s %s\n",RED,NORMAL,loc ); 
+        fprintf(stderr,"Could not open directory:%s\n",loc ); 
+        status = 0;
         return;
     }
     while((de=readdir(dr)) != NULL)

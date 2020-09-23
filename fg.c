@@ -6,7 +6,8 @@ void fg(char* pid)
     //printf("%d\n",pidt);
     if(pidt==0 || pidt > curr_proc || process_status[pidt-1]!=0)
     {
-        printf("Incorrect process number \n");
+        fprintf(stderr,"Incorrect process number \n");
+        status = 0;
     }
     else
     {

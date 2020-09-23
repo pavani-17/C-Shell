@@ -3,6 +3,7 @@
 void execute_inst(char** instruction, int len) // Execute the given instruction
 {
     int i;
+    status = 1;
     for(i=0;i<len;i++)
     {
         remove_spaces(instruction[i]);
@@ -26,7 +27,8 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     { 
         if(len>2)
         {
-            printf("Too many arguments\n");
+            fprintf(stderr,"Too many arguments\n");
+            status = 0;
             return;
         }
         change_dir(instruction[1]);
@@ -48,7 +50,8 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     {
         if(len>2)
         {
-            printf("Too many arguments\n");
+            fprintf(stderr,"Too many arguments\n");
+            status = 0;
             return;
         }
         pinfo(len==1 ? NULL : instruction[1]);
@@ -61,12 +64,14 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     {
         if(len!=4)
         {
-            printf("Incorrect format for nightswatch.\n");
+            fprintf(stderr,"Incorrect format for nightswatch.\n");
+            status = 0;
             return;
         }
         if(strcmp(instruction[1],"-n")!=0)
         {
-            printf("Incorrect format for nightswatch.\n");
+            fprintf(stderr,"Incorrect format for nightswatch.\n");
+            status = 0;
             return;
         }
         if(strcmp(instruction[3],"interrupts")==0)
@@ -79,14 +84,17 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
         }
         else
         {
-            printf("Please give a valid format for nightswatch\n");
+            fprintf(stderr,"Please give a valid format for nightswatch\n");
+            status = 0;
+            return;
         }        
     }
     else if(strcmp(instruction[0],"setenv")==0)
     {
         if(len>3 || len<2)
         {
-            printf("Incorrect number of arguments\n");
+            fprintf(stderr,"Incorrect number of arguments\n");
+            status = 0;
             return;
         }
         if(instruction[2]==NULL)
@@ -96,19 +104,21 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
         if(setenv(instruction[1],instruction[2],1)<0)
         {
             perror("setenv ");
+            status = 0;
         }
-        
     }
     else if(strcmp(instruction[0],"unsetenv")==0)
     {
         if(len!=2)
         {
-            printf("Incorrect number of arguments\n");
+            fprintf(stderr,"Incorrect number of arguments\n");
+            status = 0;
             return;
         }
         if(unsetenv(instruction[1])<0)
         {
             perror("unsetenv ");
+            status = 0;
         }
     }
     else if(strcmp(instruction[0],"jobs")==0)
@@ -119,7 +129,8 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     {
         if(len!=3)
         {
-            printf("Incorrect number of arguments\n");
+            fprintf(stderr,"Incorrect number of arguments\n");
+            status = 0;
             return;
         }
         kjob(instruction[1], instruction[2]);
@@ -132,7 +143,8 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
         }
         else
         {
-            printf("Incorrect format for fg");
+            fprintf(stderr,"Incorrect format for fg");
+            status = 0;
         }
         
     }
@@ -144,7 +156,8 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
         }
         else
         {
-            printf("Incorrect format for bg");
+            fprintf(stderr,"Incorrect format for bg");
+            status = 0;
         }
         
     }

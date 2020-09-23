@@ -6,9 +6,14 @@ void bg(char* pid)
     //printf("%d\n",pidt);
     if(pidt==0 || pidt > curr_proc || process_status[pidt-1]!=0)
     {
-        printf("Incorrect process number \n");
+        fprintf(stderr,"Incorrect process number \n");
+        status = 1;
         return;
     }
-    kill(process_id[pidt-1],SIGCONT);
-
+    if(kill(process_id[pidt-1],SIGCONT)<0)
+    {
+        perror("kill");
+        status = 0;
+        return;
+    }
 }

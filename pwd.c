@@ -6,7 +6,8 @@ void print_cur_dir() // Print the current working directory
     if (getcwd(cwd1, sizeof(cwd1)) == NULL)
     {
         perror("getcwd() error");
-        exit(0);
+        status = 0;
+        return;
     }
     printf("%s\n",cwd1);
 }

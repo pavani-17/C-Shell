@@ -7,7 +7,7 @@ void get_input() // Read input from the browser
     buffer = (char *)malloc(bufsize * sizeof(char));
     if(buffer==NULL)
     {
-        printf("%s Error in assigning memory%s",RED,NORMAL);
+       fprintf(stderr," Error in assigning memory\n");
         exit(0);
     }
     
@@ -20,7 +20,7 @@ void get_input() // Read input from the browser
     history[n_h] = malloc(100000*sizeof(char)); 
     if(history[n_h]==NULL)
     {
-        printf("%s Error in memory alloaction %s",RED,NORMAL);
+        fprintf(stderr," Error in memory alloaction \n");
         exit(0);
     }
     if(n_h!=0)
@@ -76,7 +76,7 @@ void execute_input(char* instructions) // Execute input
     char** sin_ins = malloc(10000*sizeof(char *));
     if(sin_ins==NULL)
     {
-        printf("%s Error in assigning memory%s",RED,NORMAL);
+        fprintf(stderr," Error in assigning memory\n");
         exit(0);
     }
     tok = strtok(instructions," \t");
