@@ -109,7 +109,7 @@ void flag_01 (char* loc, int hide) // For -a and no flags
 
     if (dr == NULL)  
     { 
-        fprintf(stderr,"Could not open directory%s \n",loc ); 
+        fprintf(stderr,"%s Could not open directory: %s \n",red,loc); 
         status = 0;
         return;
     } 
@@ -131,7 +131,7 @@ void flag_23(char *loc, int hide) // For -l and -al
 
     if (dr == NULL)  
     { 
-        fprintf(stderr,"Could not open directory:%s\n",loc ); 
+        fprintf(stderr,"%s Could not open directory: %s\n",red,loc ); 
         status = 0;
         return;
     }

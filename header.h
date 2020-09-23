@@ -25,6 +25,7 @@
 #define RED "\033[1;31m"
 #define CYAN "\033[1;36m"
 #define MAGENTA "\033[1;35m"
+#define red "\033[0;31m"
 
 char *user_name, *system_name, *INTDIR, *PRDIR, *OPRDIR, *PREVDIR;
 

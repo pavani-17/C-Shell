@@ -3,7 +3,6 @@
 void execute_inst(char** instruction, int len) // Execute the given instruction
 {
     int i;
-    status = 1;
     for(i=0;i<len;i++)
     {
         remove_spaces(instruction[i]);
@@ -143,7 +142,7 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
         }
         else
         {
-            fprintf(stderr,"Incorrect format for fg");
+            fprintf(stderr,"Incorrect format for fg\n");
             status = 0;
         }
         
@@ -156,7 +155,7 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
         }
         else
         {
-            fprintf(stderr,"Incorrect format for bg");
+            fprintf(stderr,"Incorrect format for bg\n");
             status = 0;
         }
         

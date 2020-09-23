@@ -58,7 +58,7 @@ void get_input() // Read input from the browser
 void process_input(char* input) // Seperate the inputs on basis of ';'
 {
     char* tok; 
-
+    status = 1;
     tok = strsep(&input, ";");
     int i = 0;
 

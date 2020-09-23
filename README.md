@@ -1,6 +1,6 @@
 # CASH - A Shell in C
 
-### CASH is a Linux BASH like shell written in C.
+### CASH is a Linux BASH like shell written in C. It implements all shell commands and supports pipelining, redirection and chaining.
 
 ## How to Run?
 
@@ -14,7 +14,7 @@
     * Prints the given parameters after removing the extra spaces
 
 2. `pwd` <br>
-    * Implemented in current_dir.c
+    * Implemented in pwd.c
     * Prints the current working directory
 
 3. `cd` [Location] <br>
