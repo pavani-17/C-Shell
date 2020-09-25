@@ -59,13 +59,13 @@ void process_input(char* input) // Seperate the inputs on basis of ';'
 {
     char* tok; 
     status = 1;
-    tok = strsep(&input, ";");
+    tok = strsep(&input, ";\n");
     int i = 0;
 
     while(tok!=NULL)
     {
-        processPipe(tok);
-        tok = strsep(&input,";");
+        chaining(tok);
+        tok = strsep(&input,";\n");
     }   
 }
 

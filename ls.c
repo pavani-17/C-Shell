@@ -48,7 +48,7 @@ void print_ls(char** loc, int hidden,int lf, int len, int files) // Call appropr
                             flag_23(loc[i],1);
                             break;
                 }
-                printf("\n");
+                if(i!=(len-1))printf("\n");
             }
         }
     }

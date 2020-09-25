@@ -2,10 +2,31 @@
 
 void output_redirection(char* input)
 {
+    //input = strsep(&input,"\n");
+    int len = strlen(input);
+    int flag = 0;
+    //printf("%s %c %d\n",input,input[len-1],len);
+    if(input[len-1]=='&')
+    {
+        flag = 1;
+        input[len-1] = '\0';
+        //printf("%s\n",input);
+    }
     char* tok = strsep(&input,">");
     if(input==NULL)
     {
-        input_redirection(tok);
+        if(flag)
+        {
+            char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
+            strcpy(tok1, tok);
+            strcat(tok1, " &\0");
+            input_redirection(tok1);
+        }
+        else
+        {
+            input_redirection(tok);
+        }
+        
         return;
     }
     int out_file=-1;
@@ -34,7 +55,20 @@ void output_redirection(char* input)
         }   
     }
     dup2(out_file,1);
-    input_redirection(tok);
+    if(flag==1)
+    {
+        char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
+        strcpy(tok1, tok);
+        strcat(tok1, " &\0");
+        
+        //fprintf(stderr,"%s\n %c\n",tok1,tok1[strlen(tok1)-1]);
+        input_redirection(tok1);
+    }
+    else
+    { 
+        input_redirection(tok);
+    }
+
     dup2(cout_temp,1);
     close(out_file);
     return;
@@ -42,11 +76,29 @@ void output_redirection(char* input)
 
 void input_redirection(char* input)
 {
-
+    int len = strlen(input);
+    int flag = 0;
+    if(input[len-1]=='&')
+    {
+        flag = 1;
+        input[len-1] = '\0';
+        //printf("%s\n",input);
+    }
     char* tok = strsep(&input, "<");
     if(input==NULL)
     {
-        execute_input(tok);
+        if(flag==1)
+        {
+            char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
+            strcpy(tok1, tok);
+            strcat(tok1, " &\0");
+            execute_input(tok1);
+        }
+        else
+        {
+            execute_input(tok);
+        }
+        
         return;
     }
     int inp_file=0, cin_temp = dup(0);
@@ -60,7 +112,17 @@ void input_redirection(char* input)
         return;
     }
     dup2(inp_file,0);
-    execute_input(tok);
+    if(flag==1)
+    {
+        char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
+        strcpy(tok1, tok);
+        strcat(tok1, " &");
+        execute_input(tok1);
+    }
+    else
+    { 
+        execute_input(tok);
+    }
     dup2(cin_temp,0);
     close(inp_file);
     return;

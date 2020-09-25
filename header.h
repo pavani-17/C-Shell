@@ -126,3 +126,5 @@ void sigtstp_handler(int signum);
 /* Function in bg.c */
 void bg(char* pid);
 
+/* Functions in chaining.c */
+void chaining(char *str);

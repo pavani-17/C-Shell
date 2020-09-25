@@ -20,7 +20,7 @@ void background(char **instruction, int len) // Execute a process in bckground
     }
     if(fork_res==0)
     {
-        
+
         instruction[len] = '\0';
         if(execvp(instruction[0],instruction) < 0)
         {
