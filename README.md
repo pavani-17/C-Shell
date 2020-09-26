@@ -31,7 +31,7 @@
 
 6. `history [num]` <br>
     * Implemented in history.c
-    * Gives the `num` number of previous commands run. If `num` is not mentioned, 5 is taken as the default value for `num`.
+    * Gives the `num` number of previous commands run. If `num` is not mentioned, 10 is taken as the default value for `num`.
 
 7. `nightswatch -n [num] [interrupts/newborn]` <br>
     * Implemented in nightswatch.c
