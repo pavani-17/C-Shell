@@ -4,8 +4,8 @@
 void run_shell() // Execute the shell
 {
     signal(SIGCHLD,sigchld_handler);
-    signal(SIGINT,SIG_IGN);
-    signal(SIGTSTP,SIG_IGN);
+    signal(SIGINT,sigint_handler);
+    signal(SIGTSTP,sigtstp_handler);
     prompt();
     get_input();
 }

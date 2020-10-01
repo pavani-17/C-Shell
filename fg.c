@@ -4,9 +4,9 @@ void fg(char* pid)
 {
     int pidt = atoi(pid);
     //printf("%d\n",pidt);
-    if(pidt==0 || pidt > curr_proc || process_status[pidt-1]!=0)
+    if(pidt<=0 || pidt > curr_proc || process_status[pidt-1]!=0)
     {
-        fprintf(stderr,"Incorrect process number \n");
+        fprintf(stderr,"Invalid process number \n");
         status = 0;
     }
     else

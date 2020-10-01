@@ -6,7 +6,7 @@ void bg(char* pid)
     //printf("%d\n",pidt);
     if(pidt==0 || pidt > curr_proc || process_status[pidt-1]!=0)
     {
-        fprintf(stderr,"Incorrect process number \n");
+        fprintf(stderr,"Invalid process number \n");
         status = 1;
         return;
     }
