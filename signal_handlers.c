@@ -20,29 +20,10 @@ void sigchld_handler(int signum) // Handles the signal received when the child p
 
 void sigint_handler(int signum)
 {
-    if(curr_fore!=-1)
-    {
-        kill(curr_fore,9);
-        curr_fore = -1;
-    }
-    else
-    {
-        return;
-    }
     status = 0;
 }
 
 void sigtstp_handler(int signum)
 {
-    if(curr_fore != -1)
-    {
-        process[curr_proc] = malloc(100005*sizeof(char));
-        strcpy(process[curr_proc],curr_fore_proc);
-        process_id[curr_proc] = curr_fore;
-        process_status[curr_proc] = 0;
-        printf("[%lld] %lld\n",curr_proc+1,process_id[curr_proc]);
-        curr_proc++;
-        status = 0;
-    }
     return;
 }

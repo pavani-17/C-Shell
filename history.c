@@ -69,6 +69,10 @@ void write_history() // Write history for the file
     int j=0;
     for(j=0;j<n_h;j++)
     {
+        
+    }
+    for(j=0;j<n_h;j++)
+    {
         fprintf(file,"%s",history[j]);
     }
     fclose(file);

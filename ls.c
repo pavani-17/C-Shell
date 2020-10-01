@@ -48,7 +48,10 @@ void print_ls(char** loc, int hidden,int lf, int len, int files) // Call appropr
                             flag_23(loc[i],1);
                             break;
                 }
-                if(i!=(len-1))printf("\n");
+                if(i!=(len-1))
+                {
+                    printf("\n");
+                }
             }
         }
     }
@@ -109,7 +112,7 @@ void flag_01 (char* loc, int hide) // For -a and no flags
 
     if (dr == NULL)  
     { 
-        fprintf(stderr," Could not open directory: %s \n",loc); 
+        perror(loc); 
         status = 0;
         return;
     } 

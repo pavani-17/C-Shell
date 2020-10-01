@@ -17,6 +17,22 @@ void get_input() // Read input from the browser
         printf("\n");
         quit();
     }
+    long long int len = strlen(buffer);
+    long long int i = 0;
+    int flag=0;
+    for(i=0;i<len;i++)
+    {
+        if(buffer[i]!='\n' && buffer[i]!=' ' && buffer[i]!='\t')
+        {
+            flag=1;
+            break;
+        }
+    }
+    if(flag==0)
+    {
+        status=0;
+        return;
+    }
     history[n_h] = malloc(100000*sizeof(char)); 
     if(history[n_h]==NULL)
     {
@@ -65,7 +81,7 @@ void process_input(char* input) // Seperate the inputs on basis of ';'
     while(tok!=NULL)
     {
         chaining(tok);
-        tok = strsep(&input,";\n");
+        tok = strsep(&input,";\n");        
     }   
 }
 

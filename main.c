@@ -4,8 +4,8 @@
 void run_shell() // Execute the shell
 {
     signal(SIGCHLD,sigchld_handler);
-    signal(SIGINT,sigint_handler);
-    signal(SIGTSTP,sigtstp_handler);
+    signal(SIGINT,SIG_IGN);
+    signal(SIGTSTP,SIG_IGN);
     prompt();
     get_input();
 }
@@ -16,6 +16,7 @@ int main()
     status=1;
     curr_fore = -1;
     get_val();
+    SHELL_PID = getpid();
     FILE* file;
     file = fopen(".history.txt","r");
     if(file==NULL)

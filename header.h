@@ -40,6 +40,7 @@ int status;
 
 char ** history;
 int n_h;
+pid_t SHELL_PID;
 
 /*Functions in basic.c */
 void get_val();
