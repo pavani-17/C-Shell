@@ -168,7 +168,7 @@ Example:
 * `chaining.c` <br>
     Contains the implementation of command chaining which binds looser than `;` but stronger than `|,>,<,>> and &`.
 
-* background.c <br>
+* `background.c` <br>
     Implementation of background processes indentified by `&`. Creates a new child process using `fork()` and the shell does not wait for its completion. 
 
 * `basic.c` <br>
