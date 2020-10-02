@@ -2,6 +2,7 @@
 
 void background(char **instruction, int len) // Execute a process in bckground
 {
+    // Creates a new child process and continues execution
     
     int fork_res = fork();  
     setpgid(0,0);  
@@ -18,9 +19,10 @@ void background(char **instruction, int len) // Execute a process in bckground
         status=1;
         return;
     }
-    if(fork_res==0)
+    if(fork_res==0) // Child
     {
-
+        // The background command is always execvp(ed). 
+        // Supports in-built commands too (Except cd)
         instruction[len] = '\0';
         if(execvp(instruction[0],instruction) < 0)
         {
@@ -29,13 +31,13 @@ void background(char **instruction, int len) // Execute a process in bckground
         }
         exit(0);
     }
-    else
+    else   // Parent
     {
         instruction[len] = '\0';
         strcpy(process[curr_proc],instruction[0]);
         process_id[curr_proc] = fork_res;
         process_status[curr_proc] = 0;
-        fprintf(stderr,"[%lld] %lld\n",curr_proc+1,process_id[curr_proc]);
+        fprintf(stderr,"[%lld] %lld %s\n",curr_proc+1,process_id[curr_proc],process[curr_proc]);
         curr_proc++;
         return;
     }

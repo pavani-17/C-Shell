@@ -1,5 +1,9 @@
 #include "header.h"
 
+// Files used
+// interrupts => /proc/interrupts
+// newborn => /proc/loadavg
+
 void watch_interrupt(char* t) // Executes nightwatch interrupts
 {
     int n = atoi(t);
@@ -69,9 +73,14 @@ int input_available(int n) // Checks if any letter(q for exiting) is available w
     val.tv_sec=n;
 
     fd_set in;
-    FD_ZERO(&in);
-    FD_SET(STDIN_FILENO,&in);
+    FD_ZERO(&in); // Empty input file descriptor set
+    FD_SET(STDIN_FILENO,&in); // Add STDIN to that set
     select(STDIN_FILENO+1,&in,NULL,NULL,&val);
+    // Basic idea:
+    // select function watches the given file decriptor sets (input,output, and error)
+    // Checks if any of them is ready
+    // Waits for val time => Time feature is exploited here rather than sleep(5)
+    // Advantage => Gives immediate result (if sleep(5), checkes once in 5 sec)
     return (FD_ISSET(0,&in));
 }
 
@@ -113,7 +122,7 @@ void print_out(char* buffer) // prints the output for interrupts
         tok = strtok(0," ");
         i++;
     }
-    int p = get_nprocs();
+    int p = get_nprocs(); // Number of processors (Does not work in MacOS)
     for(i=0;i<p;i++)
     {
         printf("  CPU%d\t",i);

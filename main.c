@@ -3,9 +3,9 @@
  
 void run_shell() // Execute the shell
 {
-    signal(SIGCHLD,sigchld_handler);
-    signal(SIGINT,sigint_handler);
-    signal(SIGTSTP,sigtstp_handler);
+    signal(SIGCHLD,sigchld_handler);  // Track background process
+    signal(SIGINT,sigint_handler);    // Does nothing but sets status=0, do not ignore as child will inherit behavior
+    signal(SIGTSTP,sigtstp_handler);  // Same as above **DONT IGNORE
     prompt();
     get_input();
 }

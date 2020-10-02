@@ -129,3 +129,6 @@ void bg(char* pid);
 
 /* Functions in chaining.c */
 void chaining(char *str);
+
+// Later : Make seperate headers
+// Make all errors to stderr so that can be displayed for piping and redirection too

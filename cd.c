@@ -1,6 +1,6 @@
 #include "header.h"
 
-char* trim_dir(char*cwd) // Put root dir into folder names
+char* trim_dir(char*cwd) // Put root dir into folder names (Changes to relative(~) from absolute)
 {
     int len = strlen(cwd), len1 = strlen(INTDIR);
     int i;
@@ -62,13 +62,12 @@ void change_dir(char* loc) // Change the directory
     {
         loc="~";
     }
-    else if(strcmp(loc,"-")==0)
+    else if(strcmp(loc,"-")==0) // Support for cd -
     {
         strcpy(loc,PREVDIR);
         flag=1;
         strcpy(temp,loc);
     }
-    //printf("%s\n",loc);
     strcpy(PREVDIR,PRDIR);
     loc = inc_tilda(loc);
     if(chdir(loc)!=0)
@@ -82,5 +81,4 @@ void change_dir(char* loc) // Change the directory
     {
         printf("%s\n",temp);
     }
-    //printf("%s %s\n",PREVDIR,PRDIR);
 }

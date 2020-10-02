@@ -3,6 +3,7 @@
 
 void get_val() // Get values of USER, SYSTEM and Root directory
 {
+    // Might have to seperate to accomodate user change (Not sure)
     system_name = malloc(100005*sizeof(char));
     user_name = malloc(100005*sizeof(char));
     if(system_name==NULL)
@@ -31,11 +32,16 @@ void get_val() // Get values of USER, SYSTEM and Root directory
     strcpy(PRDIR,"~");
     OPRDIR = cwd;
     strcpy(PREVDIR,"~");
+    // user_name = name of the user
+    // system_name = hostname
+    // INTDIR = Initial directory / Home directory of the shell
+    // PREVDIR = Previous directory, initially ~, for cd -
+    // PRDIR = Present directory in terms of ~
+    // OPRDIR = Original present directory, absolute
 }
 
 void prompt() // Print the prompt everytime
 {
-    signal(SIGCHLD,sigchld_handler);
     if(status==1)
     {
         printf("\n%s:')  %s",GREEN,NORMAL);
@@ -48,7 +54,7 @@ void prompt() // Print the prompt everytime
     printf("%s%s@%s%s: %s%s%s $ ",CYAN,user_name,system_name,NORMAL,MAGENTA,PRDIR,NORMAL);
 }
 
-char* inc_tilda(char * address)
+char* inc_tilda(char * address) // Adding ~ value to any loc (Changes absolute path to relative(~))
 {
     if(address[0]=='~')
     {

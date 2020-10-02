@@ -88,7 +88,7 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
             return;
         }        
     }
-    else if(strcmp(instruction[0],"setenv")==0)
+    else if(strcmp(instruction[0],"setenv")==0) 
     {
         if(len>3 || len<2)
         {
@@ -100,7 +100,7 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
         {
             instruction[2]="";
         }
-        if(setenv(instruction[1],instruction[2],1)<0)
+        if(setenv(instruction[1],instruction[2],1)<0) // Executing here without seperate function
         {
             perror("setenv ");
             status = 0;
@@ -114,7 +114,7 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
             status = 0;
             return;
         }
-        if(unsetenv(instruction[1])<0)
+        if(unsetenv(instruction[1])<0)   // Executing here without seperate function
         {
             perror("unsetenv ");
             status = 0;

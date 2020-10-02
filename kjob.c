@@ -1,6 +1,6 @@
 #include "header.h"
 
-void kjob(char* pid, char* sig_id)
+void kjob(char* pid, char* sig_id) // Send signal based on job_id
 {
     int pid_v = atoi(pid);
     int sig_idv = atoi(sig_id);

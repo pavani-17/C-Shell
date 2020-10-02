@@ -1,6 +1,8 @@
 #include "header.h"
 
-void jobs()
+// File used : /proc/pid/stat
+
+void jobs() // Prints all background processes
 {
     int i;
     for(i=0;i<curr_proc;i++)
@@ -14,7 +16,7 @@ void jobs()
             char loc[100005];
             sprintf(loc,"/proc/%lld/stat",process_id[i]);
             FILE* f = fopen(loc,"r");
-            if(f==NULL)
+            if(f==NULL) // Check if process is stopped or terminated in some other way
             {
                 process_status[i] = 1;
                 continue;

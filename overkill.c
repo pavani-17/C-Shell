@@ -1,6 +1,6 @@
 #include "header.h"
 
-void overkill()
+void overkill()  // Kills all background processes
 {
     int i=0;
     for(i=0;i<curr_proc;i++)

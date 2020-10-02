@@ -1,5 +1,7 @@
 #include "header.h"
 
+// Files used : /proc/pid/status    /proc/pid/exec
+
 void pinfo(char *inst) // Executes pinfo command
 {
     int pid;

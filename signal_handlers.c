@@ -4,7 +4,7 @@ void sigchld_handler(int signum) // Handles the signal received when the child p
 {
     pid_t pid;
     int status1;
-    if((pid=waitpid(-1,&status1, WNOHANG)) != -1)
+    if((pid=waitpid(-1,&status1, WNOHANG)) != -1) // Checks which process exited
     {
         int i;
         for(i=0;i<curr_proc;i++)
