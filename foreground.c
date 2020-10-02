@@ -22,7 +22,7 @@ void foreground(char **instruction, int len) // Execute the process in foregroun
         signal(SIGTTOU,SIG_DFL); // Default
         if(execvp(instruction[0],instruction)==-1)
         {
-            perror(instruction[0]);
+            fprintf(stderr,"No such command\n");
             exit(1);
         }
         status=0;

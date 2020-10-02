@@ -3,6 +3,7 @@
 void execute_inst(char** instruction, int len) // Execute the given instruction
 {
     int i;
+    status = 1;
     for(i=0;i<len;i++)
     {
         remove_spaces(instruction[i]);
