@@ -94,13 +94,20 @@ void execute_input(char* instructions) // Execute input
         fprintf(stderr," Error in assigning memory\n");
         exit(0);
     }
-    tok = strtok(instructions," \t");
+
+    tok = strtok(instructions," \t\n");
+    if(tok==NULL)
+    {
+        status = 0;
+        return;
+    }
     k=0;
     while(tok!=NULL)
     {
-        sin_ins[k] = tok;
+        sin_ins[k] = malloc(100005*sizeof(char));
+        strcpy(sin_ins[k],tok);
         k++;
-        tok = strtok(0," ");
+        tok = strtok(0," \t\n");
     }
     execute_inst(sin_ins,k);
     j++;

@@ -12,6 +12,11 @@ void execute_inst(char** instruction, int len) // Execute the given instruction
     {
         len--;
     }
+    if(len==0)
+    {
+        status=0;
+        return;
+    }
     if(len>0 && strcmp(instruction[len-1],"&")==0)
     {
         if(strcmp(instruction[len-1],"&")==0)

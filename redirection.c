@@ -2,15 +2,12 @@
 
 void output_redirection(char* input)
 {
-    //input = strsep(&input,"\n");
     int len = strlen(input);
     int flag = 0;
-    //printf("%s %c %d\n",input,input[len-1],len);
     if(input[len-1]=='&')
     {
         flag = 1;
         input[len-1] = '\0';
-        //printf("%s\n",input);
     }
     char* tok = strsep(&input,">");
     if(input==NULL)
@@ -60,8 +57,6 @@ void output_redirection(char* input)
         char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
         strcpy(tok1, tok);
         strcat(tok1, " &\0");
-        
-        //fprintf(stderr,"%s\n %c\n",tok1,tok1[strlen(tok1)-1]);
         input_redirection(tok1);
     }
     else
@@ -82,21 +77,20 @@ void input_redirection(char* input)
     {
         flag = 1;
         input[len-1] = '\0';
-        //printf("%s\n",input);
     }
     char* tok = strsep(&input, "<");
     if(input==NULL)
     {
+        char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
+        strcpy(tok1, tok);
         if(flag==1)
         {
-            char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
-            strcpy(tok1, tok);
             strcat(tok1, " &\0");
             execute_input(tok1);
         }
         else
         {
-            execute_input(tok);
+            execute_input(tok1);
         }
         
         return;
@@ -112,16 +106,16 @@ void input_redirection(char* input)
         return;
     }
     dup2(inp_file,0);
+    char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
+    strcpy(tok1, tok);
     if(flag==1)
     {
-        char* tok1 = malloc((strlen(tok)+5)*sizeof(char));
-        strcpy(tok1, tok);
         strcat(tok1, " &");
         execute_input(tok1);
     }
     else
     { 
-        execute_input(tok);
+        execute_input(tok1);
     }
     dup2(cin_temp,0);
     close(inp_file);
