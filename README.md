@@ -28,23 +28,23 @@
 ## Inbuilt Commands
 
 1. `echo` <br>
-    * Implemented in echo.c
+    * Implemented in `echo.c`
     * Takes a string argument and prints it after removing the extra spaces. Does not support `$env_var`.
 
 2. `pwd` <br>
-    * Implemented in pwd.c
+    * Implemented in `pwd.c`
     * Prints the current working directory.
     * Uses the `getcwd()` system call.
 
 3. `cd [location]` <br>
-    * Implemented in cd.c
+    * Implemented in `cd.c`
     * Changes the current working directory to the mentioned directory. If no parameter is given, it changes the directory to the root directory of the shell.
     * If `~` is present in the given `location`, it is replaced with the home directory of the shell.
     * If `location` is `-`, it is interpreted as the previous working directory of the shell.
     * Implemented using `chdir()` system call.
 
 4. `ls [-l -a -al -la] [Directory]` <br>
-    * Implemented in ls.c
+    * Implemented in `ls.c`
     * Lists all the files and directories in the mentioned directory/directories. If no parameters are passed, lists the contents of current directory.
     * `-l` flag lists the long format of `ls`, providing additional details such as permissions, owner, time of creation etc.
     * `-a` flag includes the hidden files/diectories in the listing.
@@ -52,59 +52,60 @@
     * Uses the `readdir()` system call.
 
 5. `pinfo [process_id]` <br>
-    * Implemented in pinfo.c
+    * Implemented in `pinfo.c`
     * Gives the information about `process_id` process. If `process_id` not mentioned, gives information about the current process.
     * The information includes Process ID, Process Name, State of the process and the exceutable path of the process.
     * Uses the files `/proc/process_id/status` and `/proc/process_id/exec` to fetch the required information. 
 
 6. `history [num]` <br>
-    * Implemented in history.c
+    * Implemented in `history.c`
     * Gives the `num` number of previous commands run. If `num` is not mentioned, 10 is taken as the default value for `num`.
     * Continous repetitions and blank lines are avoided in the history.
 
 7. `nightswatch -n [seconds] [interrupts/newborn]` <br>
-    * Implemented in nightwatch.c
+    * Implemented in `nightwatch.c`
     * If `interrupts`, gives the number of keyboard interrupts, else if `newborn` gives the newest process.
     * Gives the results at an interval of `seconds`,  till <kbd>q</kbd>  +  <kbd>Enter</kbd> is pressed.
     * For `interrupts`, the file `/proc/interrupts` is used.
     * For `newborn`, the file `/proc/loadavg` is used. 
 
 8. `setenv [var] [val]` <br>
-    * Implemented in execute_inst.c
+    * Implemented in `execute_inst.c`
     * Creates the environment variable `var` and assigns the value `val` to it.
     * If `val` is not provided, it is interpreted as `val = NULL`.
     * Uses the `setenv()` function.
 
 9. `unsetenv [var]`
-    * Implemeted in execute_inst.c
+    * Implemeted in `execute_inst.c`
     * Deletes the environment variable named `val` along with its value.
     * Uses the `unsetenv()` function.
 
 10. `jobs`
-    * Implemented in jobs.c
+    * Implemented in `jobs.c`
     * Lists all the background process along with their `job_id`, `pid` and `status` (Running or Stopped).
     * Information required is taken from `/proc/pid/stat` file.
 
 11. `kjob [job_id] [signal]`
-    * Implemented in kjob.c
+    * Implemented in `kjob.c`
     * Sends `signal` to the process with Job ID `job_id`.
     * Uses the `kill()` system call.
 
 12. `fg [job_id]`
-    * Implemented in fg.c
+    * Implemented in `fg.c`
     * Makes a stopped background process with Job ID `job_id` continue as a foreground process.
 
 13. `bg [job_id]`
-    * Implemented in bg.c
+    * Implemented in `bg.c`
     * Continous a stopped background process in the background. 
 
 14. `overkill`
-    * Implemented in overkill.c
+    * Implemented in `overkill.c`
     * Terminates all background processes.
     * Uses the `kill()` system call with `SIGKILL`.
 
 
 15. `quit`
+    * Implemented in `quit.c`
     * Quits the terminal.
     * Use this command to ensure proper closing (killing all persisting background processes).
     * <kbd>Ctrl</kbd> + <kbd>D</kbd> provides the same functionality.
@@ -187,7 +188,7 @@ Example:
     Contains the `main()`. The shell execution starts from here.
 
 * `signal_handlers.c` <br>
-    Contains the signal handlers for `SIGCHLD` (used to keep track of background processes), `SIGINT` and `SIGSTP` signals.
+    Contains the signal handlers for `SIGCHLD` (used to keep track of background processes), `SIGINT` and `SIGTSTP` signals.
     
 * `header.h` <br>
     Contains all required headers and global variables
