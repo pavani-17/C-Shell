@@ -133,7 +133,7 @@ Example:
     username@hostname $ sort < lines.txt >> sortedlines.txt
     ```
 
-4. Commands are chained using logivcal `AND` and `OR` operators, such that the `EXIT CODE` of the entire chain is the logical `AND` or `OR` (respectively) of the individual exit codes. These operators short circuit, have equal precedence and are evaluated left-to-right.<br>
+4. Commands are chained using logical `AND` and `OR` operators, such that the `EXIT CODE` of the entire chain is the logical `AND` or `OR` (respectively) of the individual exit codes. These operators short circuit, have equal precedence and are evaluated left-to-right.<br>
 Example:
     ```
     :') username@hostname > ls $ echo penguins @ echo fail
