@@ -13,7 +13,7 @@
 
 2. The prompt for taking the next command displays the `username`, `hostname` and the `present working directory`. The directory in which the shell is run is taken to be the home directory `~` of the shell. The present working directory is displayed either in terms of `~` (if `~` is its ancesstor) or as absolute path.
 
-3. Cash provides process management by allowing to control between background and foreground processes and swith between them. The background process control is provided using `fg`, `bg` and `&`, which is explained in detail later.
+3. Cash provides process management by allowing to control between background and foreground processes and switch between them. The background process control is provided using `fg`, `bg` and `&`, which is explained in detail later.
 
 4. Signals like `SIGSTP` (  <kbd>Ctrl</kbd> `+` <kbd>Z</kbd>  ) and `SIGINT`  (  <kbd>Ctrl</kbd> `+` <kbd>C</kbd>  ) are handled using appropriate signal handlers which is explained later.
 
